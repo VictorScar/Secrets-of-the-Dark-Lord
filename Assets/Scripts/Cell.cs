@@ -14,12 +14,5 @@ public class Cell : MonoBehaviour
         this.map = map;
     }
 
-    public static explicit operator Cell(GameObject v)
-    {
-        throw new NotImplementedException();
-    }
-    //public virtual void OnLevelGenerated()
-    //{
-
-    //}
+   
 }

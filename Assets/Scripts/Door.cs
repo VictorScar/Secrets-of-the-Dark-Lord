@@ -16,7 +16,7 @@ public class Door : Cell
 
     private void OrientDoor()
     {
-        if (map.GetBottomCell(gameObject.GetComponent<Door>()) is Floor)
+        if (map.GetBottomCell(this) is Floor)
         {
             transform.rotation = Quaternion.Euler(0,0,0);
         }
@@ -24,13 +24,7 @@ public class Door : Cell
         {
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
-       
-            //if (id == 2 && levelData[x, y - 1] != null && levelData[x, y - 1] == "1")
-        //{
-        //    angle = 90f;
-        //}
-        //else angle = 0;
-
+              
     }
 
     public void OpenDoor()

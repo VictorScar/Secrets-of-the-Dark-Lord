@@ -11,7 +11,7 @@ public class Floor : Cell
 
         if (renderer !=null && materials != null && materials.Length > 0)
         {
-            renderer.material = materials[Random.Range(0, materials.Length)];
+            renderer.material = materials[Randomizer.RandomWithChance(0,materials.Length, 0, 0.5f)];
         }
 
 

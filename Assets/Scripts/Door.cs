@@ -5,18 +5,21 @@ using UnityEngine;
 
 public class Door : Cell
 {
-    bool opened = false; 
+    public bool opened = false;
+    Animator doorAnimation;
 
 
     public override void Init(Map map)
     {
         base.Init(map);
         OrientDoor();
+        doorAnimation = GetComponentInChildren<Animator>();
+       
     }
 
     private void OrientDoor()
     {
-        if (map.GetBottomCell(this) is Floor)
+        if (GetBottomCell(this) is Floor)
         {
             transform.rotation = Quaternion.Euler(0,0,0);
         }
@@ -30,6 +33,13 @@ public class Door : Cell
     public void OpenDoor()
     {
         opened = true;
+        doorAnimation.Play("Open");
+
+    }
+    public void CloseDoor()
+    {
+        opened = false;
+        doorAnimation.Play("Closed");
 
     }
 }

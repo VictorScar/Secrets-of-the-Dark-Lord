@@ -4,121 +4,36 @@ using UnityEngine;
 
 public static class Randomizer
 {
-    public static int RandomWithChance(int min, int max, int number1, float chance1)
+ 
+    public static T RandomWithChance<T>(ObjectWithChance<T>[] objects)
+    //Функция принимает массив структур ObjectWithChance, в которых заданны объекты с неопределенным типом 
+    //(задается при вызове функции) и значения веротяностиих выпадения, и возвращает случайный объект того же типа
+    //с заданным значением вероятности
     {
 
-        int[] arrayNumbers = new int[10];
-        float countNumber1 = chance1 * 10;
-        if (chance1 >= 0 && chance1 < 1)
+        float total = 0;
+
+        foreach (ObjectWithChance<T> elem in objects)
         {
-            
-            for (int i = 0; i < arrayNumbers.Length; i++)
+            total += elem.chance;
+        }
+
+        float randomPoint = Random.value * total;
+
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (randomPoint < objects[i].chance)
             {
-                
-                if (countNumber1 > 0)
-                {
-                    arrayNumbers[i] = number1;
-                    countNumber1--;
-                }
-                else
-                {
-                    arrayNumbers[i] = Random.Range(min, max);
-                }
-                
+                return objects[i].value;
             }
-        }
-        else
-        {
-            throw new System.NotImplementedException("Неверный диапазон шанса выпадения числа. Введите значение для 'chance' в диапазоне от 0 до 1");
-        }
-        int randomNumber = arrayNumbers[Random.Range(0, arrayNumbers.Length)];
-        return randomNumber;
-    }
-
-
-    public static int RandomWithChance(int min, int max, int number1, float chance1, int number2, float chance2)
-    {
-        int[] arrayNumbers = new int[10];
-        float countNumber1 = chance1 * 10;
-        float countNumber2 = chance2 * 10;
-        if (chance1 >= 0 && chance1 < 1 && chance2 >= 0 && chance2 < 1 && chance1 + chance2 < 1)
-        {
-
-            for (int i = 0; i < arrayNumbers.Length; i++)
+            else
             {
-              
-                if (countNumber1 > 0)
-                {
-                    arrayNumbers[i] = number1;
-                    countNumber1--;
-                }
-
-               
-                else if (countNumber2 > 0)
-                {
-                    arrayNumbers[i] = number2;
-                    countNumber2--;
-                }
-
-                else
-                {
-                    arrayNumbers[i] = Random.Range(min, max);
-                }
+                randomPoint -= objects[i].chance;
             }
-        }
-        else
-        {
-            throw new System.NotImplementedException("Неверный диапазон шанса выпадения числа. Введите значение для 'chance' в диапазоне от 0 до 1");
-        }
-        int randomNumber = arrayNumbers[Random.Range(0, arrayNumbers.Length)];
-        return randomNumber;
-    }
 
-    public static int RandomWithChance(int min, int max, int number1, float chance1, int number2, float chance2, int number3, float chance3)
-    {
-        int[] arrayNumbers = new int[10];
-        float countNumber1 = chance1 * 10;
-        float countNumber2 = chance2 * 10;
-        float countNumber3 = chance3 * 10;
-        if (chance1 >= 0 && chance1 < 1 && chance2 >= 0 && chance2 < 1 && chance3 >= 0 && chance3 < 1 && chance1 + chance2 + chance3 < 1)
-        {
-            for (int i = 0; i < arrayNumbers.Length; i++)
-            {
-                
-                if (countNumber1 > 0)
-                {
-                    arrayNumbers[i] = number1;
-                    countNumber1--;
-                }
 
-                
-                else if (countNumber2 > 0)
-                {
-                    arrayNumbers[i] = number2;
-                    countNumber2--;
-                }
-
-                else if (chance1 + chance2 < 1)
-                {
-                    
-                    if (countNumber3 > 0)
-                    {
-                        arrayNumbers[i] = number3;
-                        countNumber3--;
-                    }
-                }
-                else
-                {
-                    arrayNumbers[i] = Random.Range(min, max);
-                }
-            }
         }
-        else
-        {
-            throw new System.NotImplementedException("Неверный диапазон шанса выпадения числа. Введите значение для 'chance' в диапазоне от 0 до 1");
-        }
-        int randomNumber = arrayNumbers[Random.Range(0, arrayNumbers.Length)];
-        return randomNumber;
+        return objects[objects.Length - 1].value;
     }
 
 }

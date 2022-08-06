@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Floor : Cell
 {
-    [SerializeField] Material[] materials;
     [SerializeField] new Renderer renderer;
+    [OneLine]
+    [SerializeField] ObjectWithChance<Material>[] materials;
     void Start()
     {
 
-        if (renderer !=null && materials != null && materials.Length > 0)
+        if (renderer != null && materials != null && materials.Length > 0)
         {
-            renderer.material = materials[Randomizer.RandomWithChance(0,materials.Length, 0, 0.5f)];
+            renderer.material = Randomizer.RandomWithChance(materials);
         }
 
 

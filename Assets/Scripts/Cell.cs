@@ -8,13 +8,14 @@ public class Cell : MonoBehaviour
 {
     protected Map map;
     public Coord coord;
-   
+    Cell cell;
 
 
     public virtual void Init(Map map)
     {
         this.map = map;
-       //coord = new Coord((int)transform.position.x, (int)transform.position.z);
+        cell = gameObject.GetComponent<Cell>();
+      
     }
 
     public Cell GetCell(int x, int y)
@@ -22,24 +23,24 @@ public class Cell : MonoBehaviour
         return map.GetCell(x, y);
     }
 
-    public Cell GetBottomCell(Cell cell)
+    public Cell GetBottomCell()
     {
         return map.GetBottomCell(cell);
     }
 
-    public Cell GetUpperCell(Cell cell)
+    public Cell GetUpperCell()
     {
      
         return map.GetUpperCell(cell);
     }
 
-    public Cell GetLeftCell(Cell cell)
+    public Cell GetLeftCell()
     {
         
         return map.GetLeftCell(cell);
     }
 
-    public Cell GetRightCell(Cell cell)
+    public Cell GetRightCell()
     {
        
         return map.GetRightCell(cell);

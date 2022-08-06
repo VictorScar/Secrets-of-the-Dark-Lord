@@ -5,7 +5,6 @@ using UnityEngine;
 [SelectionBase]
 public class Player : MonoBehaviour
 {
-    //[SerializeField] Animator animatorPlayer;
     public Cell startingCell;
     Cell currentCell;
     enum MoveDirection
@@ -30,48 +29,44 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Move(MoveDirection.Up);
-
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Move(MoveDirection.Down);
-
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Move(MoveDirection.Left);
-
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Move(MoveDirection.Right);
-
         }
     }
 
     private void Move(MoveDirection direction)
     {
-        //animatorPlayer.Play("Run");
+       
         Cell nextCell = null;
         switch (direction)
         {
             case MoveDirection.Up:
-                nextCell = currentCell.GetUpperCell(currentCell);
+                nextCell = currentCell.GetUpperCell();
                 gameObject.transform.rotation = Quaternion.identity;
                 break;
             case MoveDirection.Down:
-                nextCell = currentCell.GetBottomCell(currentCell);
+                nextCell = currentCell.GetBottomCell();
                 gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
                 break;
             case MoveDirection.Left:
-                nextCell = currentCell.GetLeftCell(currentCell);
+                nextCell = currentCell.GetLeftCell();
                 gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
                 break;
             case MoveDirection.Right:
-                nextCell = currentCell.GetRightCell(currentCell);
+                nextCell = currentCell.GetRightCell();
                 gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
                 break;
         }
@@ -95,10 +90,8 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Door is lock");
                 door.OpenDoor();
-
             }
 
         }
-        //animatorPlayer.Play("Idle");
     }
 }

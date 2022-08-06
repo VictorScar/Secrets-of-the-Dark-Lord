@@ -19,7 +19,7 @@ public class Door : Cell
 
     private void OrientDoor()
     {
-        if (GetBottomCell(this) is Floor)
+        if (GetBottomCell() is Floor)
         {
             transform.rotation = Quaternion.Euler(0,0,0);
         }

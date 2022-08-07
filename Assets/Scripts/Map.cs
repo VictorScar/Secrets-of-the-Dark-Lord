@@ -5,22 +5,9 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public Cell[,] cells;
-    static Map map;
-
+    
     public int Width { get => cells.GetLength(0); }
     public int Height { get => cells.GetLength(1); }
-
-    public static  Map MyMap { 
-        get
-        {
-            return map;
-        }
-         set
-        {
-            
-        }
-            }
-
 
     public Cell GetCell(int x, int y)
     {

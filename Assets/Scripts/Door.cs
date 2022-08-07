@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class Door : Cell
 {
-    public bool opened = false;
-    Animator doorAnimation;
+    bool opened = false;
+    public bool Opened { get { return opened; } }
+    [SerializeField] Animator doorAnimator;
 
 
     public override void Init(Map map)
     {
         base.Init(map);
         OrientDoor();
-        doorAnimation = GetComponentInChildren<Animator>();
+        
        
     }
 
@@ -33,13 +34,13 @@ public class Door : Cell
     public void OpenDoor()
     {
         opened = true;
-        doorAnimation.Play("Open");
+        doorAnimator.Play("Open");
 
     }
     public void CloseDoor()
     {
         opened = false;
-        doorAnimation.Play("Closed");
+        doorAnimator.Play("Closed");
 
     }
 }

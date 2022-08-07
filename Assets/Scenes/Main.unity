@@ -228,7 +228,6 @@ GameObject:
   - component: {fileID: 716002615}
   - component: {fileID: 716002614}
   - component: {fileID: 716002616}
-  - component: {fileID: 716002617}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -253,6 +252,7 @@ MonoBehaviour:
   - {fileID: 856168483445385204, guid: 4a34386fdcbc84b4b947018bc5640ab3, type: 3}
   - {fileID: 5080558929889149387, guid: c60a0e8de53b430438598500ea2df369, type: 3}
   - {fileID: 4735735278287397200, guid: f10981bb0220d184c8f44be1c83b34be, type: 3}
+  - {fileID: 1653143141659881466, guid: 2b306f471a2840347a38e94a545654ef, type: 3}
   map: {fileID: 716002616}
 --- !u!4 &716002615
 Transform:
@@ -281,19 +281,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149e6108b6f011946ba2d15552a65e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &716002617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716002613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b158cfdfc6c12dd469847594da9762e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  map: {fileID: 716002616}
-  player: {fileID: 1006416069458433786, guid: 54547a0e476f0eb449620e9578950759, type: 3}
-  cameraFollow: {fileID: 1427481146126248200, guid: 30e586d54795f6b42868032e6d84d5a2, type: 3}
-  startCell: {fileID: 0}

@@ -9,19 +9,15 @@ public class Cell : MonoBehaviour
     protected Map map;
     public Coord coord;
     Cell cell;
-
+    public Map Map { get { return map; } }
 
     public virtual void Init(Map map)
     {
         this.map = map;
         cell = gameObject.GetComponent<Cell>();
-      
     }
 
-    public Cell GetCell(int x, int y)
-    {
-        return map.GetCell(x, y);
-    }
+   
 
     public Cell GetBottomCell()
     {

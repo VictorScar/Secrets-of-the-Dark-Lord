@@ -7,16 +7,7 @@ public class Player : MonoBehaviour
 {
     public Cell startingCell;
     Cell currentCell;
-    enum MoveDirection
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
-
-
-
+ 
     void Start()
     {
         currentCell = startingCell;
@@ -30,18 +21,15 @@ public class Player : MonoBehaviour
         {
             Move(MoveDirection.Up);
         }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Move(MoveDirection.Down);
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Move(MoveDirection.Left);
         }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Move(MoveDirection.Right);
         }
@@ -49,7 +37,7 @@ public class Player : MonoBehaviour
 
     private void Move(MoveDirection direction)
     {
-       
+
         Cell nextCell = null;
         switch (direction)
         {
@@ -73,18 +61,14 @@ public class Player : MonoBehaviour
 
         if (nextCell is Floor)
         {
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, nextCell.transform.position, 1);
-            currentCell = nextCell;
-
+            TeleportToCell(nextCell);
         }
         else if (nextCell is Door)
         {
             Door door = nextCell as Door;
-            if (door.opened)
+            if (door.Opened)
             {
-                gameObject.transform.position = nextCell.transform.position;
-                currentCell = nextCell;
-
+                TeleportToCell(nextCell);
             }
             else
             {
@@ -93,5 +77,11 @@ public class Player : MonoBehaviour
             }
 
         }
+    }
+
+    private void TeleportToCell(Cell nextCell)
+    {
+        transform.position = nextCell.transform.position;
+        currentCell = nextCell;
     }
 }

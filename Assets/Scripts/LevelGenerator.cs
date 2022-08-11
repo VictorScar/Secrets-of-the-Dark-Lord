@@ -9,10 +9,10 @@ public class LevelGenerator : MonoBehaviour
     string path = "Assets/Levels/Level.csv";
     [SerializeField] Cell[] prefabs;
     [SerializeField] Map map;
+   
 
     void Awake()
     {
-
         string[,] levelData = ReadLevel();
 
         int width = levelData.GetLength(0);

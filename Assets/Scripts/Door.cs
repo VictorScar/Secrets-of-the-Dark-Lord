@@ -5,31 +5,42 @@ using UnityEngine;
 
 public class Door : Cell
 {
-    bool opened = false; 
+    public bool Opened { get; protected set; }
+
+    [SerializeField] Animator doorAnimator;
 
 
     public override void Init(Map map)
     {
         base.Init(map);
         OrientDoor();
+
+
     }
 
     private void OrientDoor()
     {
-        if (map.GetBottomCell(this) is Floor)
+        if (GetBottomCell() is Floor)
         {
-            transform.rotation = Quaternion.Euler(0,0,0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
-              
+
     }
 
     public void OpenDoor()
     {
-        opened = true;
+        Opened = true;
+        doorAnimator.Play("Open");
+
+    }
+    public void CloseDoor()
+    {
+        Opened = false;
+        doorAnimator.Play("Closed");
 
     }
 }

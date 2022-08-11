@@ -5,10 +5,10 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public Cell[,] cells;
+    
     public int Width { get => cells.GetLength(0); }
     public int Height { get => cells.GetLength(1); }
 
-  
     public Cell GetCell(int x, int y)
     {
         if (x >= 0 && x < Width && y >= 0 && y < Height)
@@ -48,4 +48,6 @@ public class Map : MonoBehaviour
         int y = cell.coord.y;
         return GetCell(x + 1, y);
     }
+
+
 }

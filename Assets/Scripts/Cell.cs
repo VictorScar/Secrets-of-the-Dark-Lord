@@ -16,7 +16,15 @@ public class Cell : MonoBehaviour
         this.map = map;
     }
 
+    public virtual bool OnBeforePlayerMove(Player player)
+    {
+        return false;
+    }
 
+    public virtual void OnPlayerMove(Player player)
+    {
+        
+    }
 
     public Cell GetBottomCell()
     {

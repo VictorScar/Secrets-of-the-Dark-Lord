@@ -9,13 +9,15 @@ public class Floor : Cell
     void Start()
     {
 
-        if (renderer !=null && materials != null && materials.Length > 0)
+        if (renderer != null && materials != null && materials.Length > 0)
         {
             renderer.material = materials[Random.Range(0, materials.Length)];
         }
-
-
     }
 
+    public override bool OnBeforePlayerMove(Player player)
+    {
+        return true;
+    }
 
 }

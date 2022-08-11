@@ -47,6 +47,6 @@ public class Door : Cell
             OpenDoor();
             return false;
         }
-        return Opened;
+        return true;
     }
 }

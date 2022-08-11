@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         if (nextCell.OnBeforePlayerMove(this))
         {
             TeleportToCell(nextCell);
+            nextCell.OnPlayerMove(this);
         }
     }
 

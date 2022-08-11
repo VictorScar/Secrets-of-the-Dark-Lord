@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    string path = "Assets/Levels/Level.csv";
     [SerializeField] Cell[] prefabs;
     [SerializeField] Map map;
-   
+
 
     void Awake()
     {
@@ -62,8 +61,9 @@ public class LevelGenerator : MonoBehaviour
     string[,] ReadLevel()
     {
         string[,] levelData = null;
-
-        string[] lines = File.ReadAllLines(path);
+        TextAsset levelAsset = Resources.Load<TextAsset>("Levels/Level");
+        string levelText = levelAsset.text;
+        string[] lines = levelText.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
         for (int y = 0; y < lines.Length; y++)
         {
             string line = lines[y];

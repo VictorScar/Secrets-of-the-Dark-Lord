@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public Cell startingCell;
     Cell currentCell;
- 
+
     void Start()
     {
         currentCell = startingCell;
@@ -59,23 +59,10 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        if (nextCell is Floor)
+        if (nextCell.OnBeforePlayerMove(this))
         {
             TeleportToCell(nextCell);
-        }
-        else if (nextCell is Door)
-        {
-            Door door = nextCell as Door;
-            if (door.Opened)
-            {
-                TeleportToCell(nextCell);
-            }
-            else
-            {
-                Debug.Log("Door is lock");
-                door.OpenDoor();
-            }
-
+            nextCell.OnPlayerMove(this);
         }
     }
 

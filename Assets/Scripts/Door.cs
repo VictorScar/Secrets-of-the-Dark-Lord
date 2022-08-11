@@ -14,8 +14,6 @@ public class Door : Cell
     {
         base.Init(map);
         OrientDoor();
-
-
     }
 
     private void OrientDoor()
@@ -35,12 +33,20 @@ public class Door : Cell
     {
         Opened = true;
         doorAnimator.Play("Open");
-
     }
     public void CloseDoor()
     {
         Opened = false;
         doorAnimator.Play("Closed");
+    }
 
+    public override bool OnBeforePlayerMove(Player player)
+    {
+        if (!Opened)
+        {
+            OpenDoor();
+            return false;
+        }
+        return true;
     }
 }

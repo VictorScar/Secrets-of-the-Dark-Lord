@@ -14,9 +14,11 @@ public class Floor : Cell
         {
             renderer.material = Randomizer.RandomWithChance(materials);
         }
-
-
     }
 
+    public override bool OnBeforePlayerMove(Player player)
+    {
+        return true;
+    }
 
 }

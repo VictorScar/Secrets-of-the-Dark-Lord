@@ -28,7 +28,7 @@ public class LevelGenerator : MonoBehaviour
                 int id = int.Parse(levelData[x, y]);
 
                 Cell cell = Instantiate(prefabs[id], new Vector3(x, 0.0f, y), Quaternion.identity, transform);
-                cell.coord = new Coord(x, y);
+                cell.coord = new Vector2Int(x, y);
                 map.cells[x, y] = cell;
             }
 

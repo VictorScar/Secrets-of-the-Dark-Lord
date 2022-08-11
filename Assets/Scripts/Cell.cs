@@ -7,7 +7,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     protected Map map;
-    public Coord coord;
+    public Vector2Int coord;
 
     public Map Map { get { return map; } }
 

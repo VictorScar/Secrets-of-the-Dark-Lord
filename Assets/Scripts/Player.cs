@@ -7,10 +7,12 @@ public class Player : MonoBehaviour
 {
     public Cell startingCell;
     Cell currentCell;
+    [SerializeField] float speed = 0.5f;
 
     void Start()
     {
         currentCell = startingCell;
+
     }
 
 
@@ -59,9 +61,11 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        if (nextCell.OnBeforePlayerMove(this))
+        if (nextCell != null && nextCell.OnBeforePlayerMove(this))
         {
-            TeleportToCell(nextCell);
+            //TeleportToCell(nextCell);
+            StartCoroutine(MoveToCell(nextCell));
+            currentCell = nextCell;
             nextCell.OnPlayerMove(this);
         }
     }
@@ -70,5 +74,18 @@ public class Player : MonoBehaviour
     {
         transform.position = nextCell.transform.position;
         currentCell = nextCell;
+    }
+
+    IEnumerator MoveToCell(Cell nextCell)
+    {
+        int time = 360;
+        while (time<0)
+        {
+            transform.position += new Vector3(speed * Time.deltaTime, 0,0);
+            time--;
+            
+        }
+        currentCell = nextCell;
+        yield return null;
     }
 }

@@ -7,36 +7,25 @@ public class Player : MonoBehaviour
 {
     public Cell startingCell;
     Cell currentCell;
+    [SerializeField] float speed = 0.5f;
+    [SerializeField] Animator animator;
+    public bool IsMoving { get; private set; }
 
     void Start()
     {
         currentCell = startingCell;
+
     }
 
-
-    void Update()
+    public void Move(MoveDirection direction)
     {
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Move(MoveDirection.Up);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Move(MoveDirection.Down);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Move(MoveDirection.Left);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Move(MoveDirection.Right);
-        }
+        StartCoroutine(MoveCoroutine(direction));
     }
 
-    private void Move(MoveDirection direction)
+    IEnumerator MoveCoroutine(MoveDirection direction)
     {
+        IsMoving = true;
+        animator.Play("Run");
 
         Cell nextCell = null;
         switch (direction)
@@ -59,16 +48,32 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        if (nextCell.OnBeforePlayerMove(this))
+        if (nextCell != null && nextCell.OnBeforePlayerMove(this))
         {
-            TeleportToCell(nextCell);
+            yield return MoveToCell(nextCell);
             nextCell.OnPlayerMove(this);
         }
+
+        IsMoving = false;
+        animator.Play("Idle");
     }
 
     private void TeleportToCell(Cell nextCell)
     {
         transform.position = nextCell.transform.position;
+        currentCell = nextCell;
+    }
+
+    IEnumerator MoveToCell(Cell nextCell)
+    {
+        //TODO: Переделать в дотвин
+
+        while (transform.position != nextCell.transform.position)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, nextCell.transform.position, speed * Time.deltaTime);
+            yield return null;
+
+        }
         currentCell = nextCell;
     }
 }

@@ -9,6 +9,6 @@ public class CameraFollow : MonoBehaviour
     
     void Update()
     {
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
     }
 }

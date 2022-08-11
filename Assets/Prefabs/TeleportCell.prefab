@@ -129,10 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4a42a89ce4b4e498a71183327206f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: 6930a9ed83dfef84586f77e840dc2e89, type: 2}
   renderer: {fileID: 2463499406647355287}
-  playerPrefab: {fileID: 3703664633926164374, guid: 54547a0e476f0eb449620e9578950759, type: 3}
+  materials:
+  - value: {fileID: 0}
+    chance: 0
+  playerPrefab: {fileID: 3473981914724005232, guid: 54547a0e476f0eb449620e9578950759, type: 3}
   cameraFollowPrefab: {fileID: 2544831569413687263, guid: 30e586d54795f6b42868032e6d84d5a2, type: 3}
 --- !u!1 &8508632167354114325
 GameObject:

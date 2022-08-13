@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     Cell currentCell;
     [SerializeField] float speed = 0.5f;
     [SerializeField] Animator animator;
+    [SerializeField] Inventory inventory;
     public bool IsMoving { get; private set; }
 
     void Start()

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Item : ScriptableObject
 {
     [SerializeField] Sprite icon;
-    [SerializeField] new string name;
+    [SerializeField] public string itemName;
     [SerializeField] int price;
 
     public Sprite Icon { get => icon;}

@@ -6,7 +6,9 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item")]
 public class Item : ScriptableObject
 {
-    [SerializeField] Texture icon;
+    [SerializeField] Sprite icon;
     [SerializeField] new string name;
     [SerializeField] int price;
+
+    public Sprite Icon { get => icon;}
 }

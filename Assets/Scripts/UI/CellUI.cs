@@ -17,4 +17,10 @@ public class CellUI : MonoBehaviour, IPointerClickHandler
         itemImage.sprite = icon;
         itemImage.color = Color.white;
     }
+
+    public void CleanIcon()
+    {
+        itemImage.sprite = null;
+        itemImage.color = Color.clear;
+    }
 }

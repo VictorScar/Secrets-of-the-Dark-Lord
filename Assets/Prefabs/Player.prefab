@@ -51,6 +51,7 @@ MonoBehaviour:
   speed: 2
   animator: {fileID: 6796012991436494317}
   inventory: {fileID: 1094106820834292782}
+  item: {fileID: 11400000, guid: 0daae9f24cf401341a07d7c6ab71e077, type: 2}
 --- !u!114 &2984606819772832066
 MonoBehaviour:
   m_ObjectHideFlags: 0

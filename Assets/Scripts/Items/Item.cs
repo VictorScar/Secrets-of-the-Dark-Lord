@@ -9,6 +9,7 @@ public class Item : ScriptableObject
     [SerializeField] Sprite icon;
     [SerializeField] public string itemName;
     [SerializeField] int price;
+    public int count;
 
     public Sprite Icon { get => icon;}
 }

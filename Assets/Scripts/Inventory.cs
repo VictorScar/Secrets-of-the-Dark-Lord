@@ -11,4 +11,19 @@ public class Inventory : MonoBehaviour
     {
 
     }
+    public void RaiseItem(Item item)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            //if (item == items[i])
+            //{
+            //    items[i].count++;
+            //}
+            if (items[i] == null)
+            {
+                items[i] = item;
+                break;
+            }
+        }
+    }
 }

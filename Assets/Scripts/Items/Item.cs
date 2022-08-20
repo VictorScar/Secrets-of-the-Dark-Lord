@@ -10,6 +10,18 @@ public class Item : ScriptableObject
     [SerializeField] public string itemName;
     [SerializeField] int price;
     [SerializeField] bool isWearable;
+    [SerializeField] float damage;
+    [SerializeField] float defence;
+    enum TypeofItem
+    {
+        onehandedWeapon,
+        twohandedWeapon,
+        helmet,
+        armor,
+        boots,
+        gloves,
+        shield,
+    }
 
 
     public Sprite Icon { get => icon;}

@@ -9,7 +9,9 @@ public class Item : ScriptableObject
     [SerializeField] Sprite icon;
     [SerializeField] public string itemName;
     [SerializeField] int price;
-    public int count;
+    [SerializeField] bool isWearable;
+
 
     public Sprite Icon { get => icon;}
+    public bool IsWearable { get => isWearable;}
 }

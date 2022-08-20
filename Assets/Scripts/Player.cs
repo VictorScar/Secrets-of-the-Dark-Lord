@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 0.5f;
     [SerializeField] Animator animator;
     [SerializeField] Inventory inventory;
-    [SerializeField] Item item;
+   
     public bool IsMoving { get; private set; }
     public Inventory Inventory { get => inventory; }
 
@@ -18,14 +18,6 @@ public class Player : MonoBehaviour
     {
         currentCell = startingCell;
         Game.Instance.Player = this;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            inventory.RaiseItem(item);
-        }
     }
 
     public void Move(MoveDirection direction)

@@ -51,7 +51,6 @@ MonoBehaviour:
   speed: 2
   animator: {fileID: 6796012991436494317}
   inventory: {fileID: 1094106820834292782}
-  item: {fileID: 11400000, guid: 0daae9f24cf401341a07d7c6ab71e077, type: 2}
 --- !u!114 &2984606819772832066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +97,68 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  itemsInfo:
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  - item: {fileID: 0}
+    count: 0
+    isUsed: 0
+  item: {fileID: 11400000, guid: 0daae9f24cf401341a07d7c6ab71e077, type: 2}
 --- !u!1001 &4110267284707730802
 PrefabInstance:
   m_ObjectHideFlags: 0

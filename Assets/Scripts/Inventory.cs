@@ -1,27 +1,74 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-   [SerializeField] Item[] items = new Item[20];
-    public Item [] Items { get => items;}
+    [SerializeField] List<Item> usedItems = new List<Item>();
+    [SerializeField, OneLine] ItemInfo[] itemsInfo = new ItemInfo[20];
+    [SerializeField] Item item;
 
-    public void Use(Item item)
-    {
+    public ItemInfo[] ItemsInfo { get => itemsInfo; }
 
-    }
-    public void RaiseItem(Item item)
+    private void Update()
     {
-        for (int i = 0; i < items.Length; i++)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            //if (item == items[i])
-            //{
-            //    items[i].count++;
-            //}
-            if (items[i] == null)
+            AddItem(item);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RemoveItem(item);
+        }
+    }
+
+    public bool UseItem(Item item)
+    {
+        if (item.IsWearable)
+        {
+            usedItems.Add(item);
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsWeared (Item item)
+    {
+        return usedItems.Contains(item);
+    }
+
+    public void AddItem(Item item)
+    {
+        foreach (ItemInfo info in itemsInfo)
+        {
+            if (info.item == item)
             {
-                items[i] = item;
+                info.count++;
+                break;
+            }
+            else if (info.item == null)
+            {
+                info.item = item;
+                info.count = 1;
+                break;
+            }
+        }
+    }
+
+    public void RemoveItem(Item item)
+    {
+        foreach (ItemInfo info in itemsInfo)
+        {
+            if (info.item == item)
+            {
+                info.count--;
+                if (info.count < 1)
+                {
+                    info.item = null;
+                    usedItems.Remove(item);
+                }
                 break;
             }
         }

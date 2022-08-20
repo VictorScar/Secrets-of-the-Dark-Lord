@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class CellUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] Image itemImage;
+    [SerializeField] Image frameImage;
+    [SerializeField] TMP_Text itemCount;
+
+    public event Action<CellUI> onClick;
     public void OnPointerClick(PointerEventData eventData)
     {
-        //itemImage.color = Color.red;
+        onClick?.Invoke(this);
     }
 
     public void SetIcon(Sprite icon)
@@ -18,9 +24,29 @@ public class CellUI : MonoBehaviour, IPointerClickHandler
         itemImage.color = Color.white;
     }
 
+    public void SetCount(int count)
+    {
+        itemCount.text = count.ToString();
+    }
+
+    public void CleanCount()
+    {
+        itemCount.text = string.Empty;
+    }
+
     public void CleanIcon()
     {
         itemImage.sprite = null;
         itemImage.color = Color.clear;
+    }
+
+    public void HighlightCell()
+    {
+        frameImage.color = Color.red;
+    }
+
+    public void CleanHighlight()
+    {
+        frameImage.color = Color.white;
     }
 }

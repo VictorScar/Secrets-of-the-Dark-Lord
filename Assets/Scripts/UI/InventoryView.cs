@@ -33,7 +33,7 @@ public class InventoryView : MonoBehaviour
         //инвентаря иконки соответствуюих предметов
 
 
-        //Получение не пустых предметов из инвенторя игрока
+        //Получение пар с не пустыми значениями предметов из инвенторя игрока
         ItemCellPair[] filledPairs = pairs.Where(pair => pair.info.item != null).ToArray();
 
         //Заполнение ячеек иконками предметов
@@ -44,21 +44,17 @@ public class InventoryView : MonoBehaviour
             ItemCellPair pair = pairs[i];
             pair.cell.Redraw(BuildDrawData(pair.info));
         }
-        //Сохранение количества заполненных ячеек
+        //Сохранение количества заполненных пар
         pastPairCount = filledPairs.Length;
     }
 
     public CellDrawData BuildDrawData(ItemInfo info)
     {
         CellDrawData data = new CellDrawData();
-
         data.icon = info.item?.Icon;
         data.iconColor = info.item != null ? Color.white : Color.clear;
-
         data.countText = info.count >= 1 ? info.count.ToString() : string.Empty;
-
         data.highlightColor = info.isWeared ? Color.red : Color.white;
-
         return data;
     }
 
@@ -73,11 +69,7 @@ public class InventoryView : MonoBehaviour
         if (selectedItem.item != null)
         {
             bool isWeared = PlayerInventory.UseItem(selectedItem);
-            if (isWeared)
-            {
-                cell.HighlightCell();
-            }
-
+            cell.Redraw(BuildDrawData(selectedItem));
         }
     }
 

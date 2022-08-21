@@ -17,29 +17,6 @@ public class CellUI : MonoBehaviour, IPointerClickHandler
     {
         onClick?.Invoke(this);
     }
-
-    public void SetIcon(Sprite icon)
-    {
-        itemImage.sprite = icon;
-        itemImage.color = Color.white;
-    }
-
-    public void SetCount(int count)
-    {
-        itemCount.text = count.ToString();
-    }
-
-    public void CleanCount()
-    {
-        itemCount.text = string.Empty;
-    }
-
-    public void CleanIcon()
-    {
-        itemImage.sprite = null;
-        itemImage.color = Color.clear;
-    }
-
     public void HighlightCell()
     {
         frameImage.color = Color.red;

@@ -28,14 +28,19 @@ public class Inventory : MonoBehaviour
     {
         if (info.item.IsWearable)
         {
-            usedItems.Add(info.item);
-            info.isWeared = true;
-            return true;
+            if (!info.isWeared)
+            {
+                usedItems.Add(info.item);
+                info.isWeared = true;
+                return true;
+            }
+            usedItems.Remove(info.item);
+            info.isWeared = false;
         }
         return false;
     }
 
-    public bool IsWeared (Item item)
+    public bool IsWeared(Item item)
     {
         return usedItems.Contains(item);
     }

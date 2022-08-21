@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellDrawData : MonoBehaviour
+public class CellDrawData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Sprite icon = null;
+    public Color iconColor = Color.white;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Color highlightColor = Color.white;
+    public string countText = string.Empty;
+
+   
 }

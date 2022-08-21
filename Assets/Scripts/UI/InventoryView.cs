@@ -7,17 +7,24 @@ using System;
 
 public class InventoryView : MonoBehaviour
 {
-    [SerializeField] CellUI[] cells;
-    int filledCells = 0;
-
+    [SerializeField] List<ItemCellPair> pairs = new List<ItemCellPair>();
     Inventory PlayerInventory { get => Game.Instance.Player.Inventory; }
+    int pastPairCount = 0;
     private void Start()
     {
-        foreach (CellUI cell in cells)
+        InitInventory();
+    }
+
+    private void InitInventory()
+    {
+        for (int i = 0; i < pairs.Count; i++)
         {
-            cell.onClick += OnCellClick;
+            ItemCellPair pair = pairs[i];
+            pair.cell.onClick += OnCellClick;
+            pair.info = PlayerInventory.ItemsInfo[i];
         }
     }
+
     void ShowInventory()
     {
         //Создается массив Item, в него записываются все элементы из массива предметов
@@ -25,54 +32,67 @@ public class InventoryView : MonoBehaviour
         //Далее мы перебираем в цикле все не пустые ячейки инвентаря игрока и присваиваем в ячейки визуального
         //инвентаря иконки соответствуюих предметов
 
-        //Очистка ранее заполненных ячеек
-        for (int i = 0; i < filledCells; i++)
-        {
-            CellUI cell = cells[i];
-            cell.CleanIcon();
-            cell.CleanCount();
-            cell.CleanHighlight();
-        }
 
         //Получение не пустых предметов из инвенторя игрока
-        var itemsInfo = PlayerInventory.ItemsInfo.Where(i => i.item != null).ToArray();
+        ItemCellPair[] filledPairs = pairs.Where(pair => pair.info.item != null).ToArray();
 
         //Заполнение ячеек иконками предметов
-        for (int i = 0; i < itemsInfo.Length; i++)
-        {
-            cells[i].SetIcon(itemsInfo[i].item.Icon);
-            cells[i].SetCount(itemsInfo[i].count);
-            if (PlayerInventory.IsWeared(itemsInfo[i].item))
-            {
-                cells[i].HighlightCell();
-            }
-        }
 
+        int redrawCellsCount = Mathf.Max(pastPairCount, filledPairs.Length);
+        for (int i = 0; i < redrawCellsCount; i++)
+        {
+            ItemCellPair pair = pairs[i];
+            pair.cell.Redraw(BuildDrawData(pair.info));
+        }
         //Сохранение количества заполненных ячеек
-        filledCells = itemsInfo.Length;
+        pastPairCount = filledPairs.Length;
+    }
+
+    public CellDrawData BuildDrawData(ItemInfo info)
+    {
+        CellDrawData data = new CellDrawData();
+
+        data.icon = info.item?.Icon;
+        data.iconColor = info.item != null ? Color.white : Color.clear;
+
+        data.countText = info.count >= 1 ? info.count.ToString() : string.Empty;
+
+        data.highlightColor = info.isWeared ? Color.red : Color.white;
+
+        return data;
     }
 
     private void OnEnable()
     {
         ShowInventory();
     }
-
-    void OnCellClick(CellUI cell)
+    private void OnCellClick(CellUI cell)
     {
-        int index = Array.IndexOf(cells, cell);
-        Item selectedItem = PlayerInventory.ItemsInfo[index].item;
-        if (selectedItem != null)
+        ItemInfo selectedItem = pairs.First(p => cell == p.cell).info;
+
+        if (selectedItem.item != null)
         {
             bool isWeared = PlayerInventory.UseItem(selectedItem);
             if (isWeared)
             {
                 cell.HighlightCell();
             }
+
         }
     }
 
     private void Reset()
     {
-        cells = GetComponentsInChildren<CellUI>();
+        var cells = GetComponentsInChildren<CellUI>();
+        foreach (CellUI cell in cells)
+        {
+            ItemCellPair pair = new ItemCellPair()
+            {
+                cell = cell,
+                info = null
+            };
+            pairs.Add(pair);
+        }
+
     }
 }

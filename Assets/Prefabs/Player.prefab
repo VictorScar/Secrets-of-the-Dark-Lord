@@ -76,88 +76,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a97664ff285e440aa93f8a9c7980ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 0daae9f24cf401341a07d7c6ab71e077, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  usedItems: []
   itemsInfo:
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
   - item: {fileID: 0}
     count: 0
-    isUsed: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
+  - item: {fileID: 0}
+    count: 0
+    isWear: 0
   item: {fileID: 11400000, guid: 0daae9f24cf401341a07d7c6ab71e077, type: 2}
 --- !u!1001 &4110267284707730802
 PrefabInstance:

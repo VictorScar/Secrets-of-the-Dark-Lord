@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemInfo
+public class ItemCellPair
 {
-    public Item item;
-    public int count;
-    public bool isWeared;
+    public CellUI cell;
+    public ItemInfo info;
 }

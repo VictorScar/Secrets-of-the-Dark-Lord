@@ -6,7 +6,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] List<Item> usedItems = new List<Item>();
-    [SerializeField, OneLine] ItemInfo[] itemsInfo = new ItemInfo[20];
+    [SerializeField, OneLine] ItemInfo[] itemsInfo = new ItemInfo[30];
     [SerializeField] Item item;
 
     public ItemInfo[] ItemsInfo { get => itemsInfo; }
@@ -24,11 +24,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public bool UseItem(Item item)
+    public bool UseItem(ItemInfo info)
     {
-        if (item.IsWearable)
+        if (info.item.IsWearable)
         {
-            usedItems.Add(item);
+            usedItems.Add(info.item);
+            info.isWeared = true;
             return true;
         }
         return false;
@@ -67,6 +68,7 @@ public class Inventory : MonoBehaviour
                 if (info.count < 1)
                 {
                     info.item = null;
+                    info.isWeared = false;
                     usedItems.Remove(item);
                 }
                 break;

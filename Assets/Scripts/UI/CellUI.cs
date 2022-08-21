@@ -49,4 +49,12 @@ public class CellUI : MonoBehaviour, IPointerClickHandler
     {
         frameImage.color = Color.white;
     }
+
+    public void Redraw(CellDrawData data)
+    {
+        itemImage.sprite = data.icon;
+        itemImage.color = data.iconColor;
+        itemCount.text = data.countText;
+        frameImage.color = data.highlightColor;
+    }
 }

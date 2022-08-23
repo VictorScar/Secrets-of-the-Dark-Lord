@@ -80,95 +80,95 @@ MonoBehaviour:
   itemsInfo:
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
+    isWeared: 0
   - item: {fileID: 0}
     count: 0
-    isWear: 0
-  item: {fileID: 11400000, guid: 0daae9f24cf401341a07d7c6ab71e077, type: 2}
+    isWeared: 0
+  item: {fileID: 11400000, guid: 96541f4974fd081458f670e2af83fa5d, type: 2}
 --- !u!1001 &4110267284707730802
 PrefabInstance:
   m_ObjectHideFlags: 0

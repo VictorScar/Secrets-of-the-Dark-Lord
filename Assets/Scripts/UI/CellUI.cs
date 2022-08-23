@@ -6,23 +6,37 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class CellUI : MonoBehaviour, IPointerClickHandler
+public class CellUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] Image itemImage;
     [SerializeField] Image frameImage;
+    [SerializeField] Image backgroundImage;
     [SerializeField] TMP_Text itemCount;
-    [SerializeField] Image discriprionPanel;
+    Color backgroundColor;
+    [SerializeField] Color backgroundColorHovered;
 
     public event Action<CellUI> onClick;
+
+    private void Start()
+    {
+        backgroundColor = backgroundImage.color;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         onClick?.Invoke(this);
     }
 
-    public void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        discriprionPanel.color = Color.grey;
+        backgroundImage.color = backgroundColorHovered;
     }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        backgroundImage.color = backgroundColor;
+    }
+
     public void HighlightCell()
     {
         frameImage.color = Color.red;
@@ -40,4 +54,5 @@ public class CellUI : MonoBehaviour, IPointerClickHandler
         itemCount.text = data.countText;
         frameImage.color = data.highlightColor;
     }
+
 }

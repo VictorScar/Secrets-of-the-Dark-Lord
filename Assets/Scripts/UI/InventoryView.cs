@@ -10,6 +10,7 @@ public class InventoryView : MonoBehaviour
     [SerializeField] List<ItemCellPair> pairs = new List<ItemCellPair>();
     Inventory PlayerInventory { get => Game.Instance.Player.Inventory; }
     int pastPairCount = 0;
+
     private void Start()
     {
         InitInventory();
@@ -31,7 +32,6 @@ public class InventoryView : MonoBehaviour
         ItemCellPair[] filledPairs = pairs.Where(pair => pair.info.item != null).ToArray();
 
         //С целью оптимизации (не обьрабатывать пустые неизменившиеся ячейки) определяем количество перерисовываемых объектов
-
         int redrawCellsCount = Mathf.Max(pastPairCount, filledPairs.Length);
 
         //В цикле берем каждую пару, которая содержит предметы или менялась с последней прорисовки
@@ -41,12 +41,14 @@ public class InventoryView : MonoBehaviour
             ItemCellPair pair = pairs[i];
             pair.cell.Redraw(BuildDrawData(pair.info));
         }
+
         //Сохранение количества заполненных пар
         pastPairCount = filledPairs.Length;
     }
 
-    //Функция обновления стека данных о прорисовке ячейки инвентаря в зависимости от текущих состояний
-    //(выделен ли объект, не был ли он удален или добавлен)
+    /// <summary>
+    /// Функция создания набора данных о прорисовке ячейки инвентаря в зависимости от текущих состояний предмета
+    /// </summary>
     public CellDrawData BuildDrawData(ItemInfo info)
     {
         CellDrawData data = new CellDrawData();
@@ -61,6 +63,7 @@ public class InventoryView : MonoBehaviour
     {
         ShowInventory();
     }
+
     private void OnCellClick(CellUI cell)
     {
         ItemInfo selectedItem = pairs.First(p => cell == p.cell).info;

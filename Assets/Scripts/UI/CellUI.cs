@@ -11,11 +11,17 @@ public class CellUI : MonoBehaviour, IPointerClickHandler
     [SerializeField] Image itemImage;
     [SerializeField] Image frameImage;
     [SerializeField] TMP_Text itemCount;
+    [SerializeField] Image discriprionPanel;
 
     public event Action<CellUI> onClick;
     public void OnPointerClick(PointerEventData eventData)
     {
         onClick?.Invoke(this);
+    }
+
+    public void OnMouseEnter()
+    {
+        discriprionPanel.color = Color.grey;
     }
     public void HighlightCell()
     {

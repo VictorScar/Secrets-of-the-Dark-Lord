@@ -24,20 +24,21 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public bool UseItem(ItemInfo info)
+    public void UseItem(ItemInfo info)
     {
         if (info.item.IsWearable)
         {
-            if (!info.isWeared)
+            if (info.isWeared)
+            {
+                usedItems.Remove(info.item);
+                info.isWeared = false;
+            }
+            else
             {
                 usedItems.Add(info.item);
                 info.isWeared = true;
-                return true;
             }
-            usedItems.Remove(info.item);
-            info.isWeared = false;
         }
-        return false;
     }
 
     public bool IsWeared(Item item)

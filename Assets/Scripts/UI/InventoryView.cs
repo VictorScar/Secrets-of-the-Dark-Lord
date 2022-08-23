@@ -27,18 +27,15 @@ public class InventoryView : MonoBehaviour
 
     void ShowInventory()
     {
-        //Создается массив Item, в него записываются все элементы из массива предметов
-        //из инвенторя игрока, за исключением пустых
-        //Далее мы перебираем в цикле все не пустые ячейки инвентаря игрока и присваиваем в ячейки визуального
-        //инвентаря иконки соответствуюих предметов
-
-
         //Получение пар с не пустыми значениями предметов из инвенторя игрока
         ItemCellPair[] filledPairs = pairs.Where(pair => pair.info.item != null).ToArray();
 
-        //Заполнение ячеек иконками предметов
+        //С целью оптимизации (не обьрабатывать пустые неизменившиеся ячейки) определяем количество перерисовываемых объектов
 
         int redrawCellsCount = Mathf.Max(pastPairCount, filledPairs.Length);
+
+        //В цикле берем каждую пару, которая содержит предметы или менялась с последней прорисовки
+        //и вызываем функию ее перерисовки, с аргументами, возвращенными функцией обновления данных о прорисовке
         for (int i = 0; i < redrawCellsCount; i++)
         {
             ItemCellPair pair = pairs[i];
@@ -48,6 +45,8 @@ public class InventoryView : MonoBehaviour
         pastPairCount = filledPairs.Length;
     }
 
+    //Функция обновления стека данных о прорисовке ячейки инвентаря в зависимости от текущих состояний
+    //(выделен ли объект, не был ли он удален или добавлен)
     public CellDrawData BuildDrawData(ItemInfo info)
     {
         CellDrawData data = new CellDrawData();
@@ -68,7 +67,7 @@ public class InventoryView : MonoBehaviour
 
         if (selectedItem.item != null)
         {
-            bool isWeared = PlayerInventory.UseItem(selectedItem);
+            PlayerInventory.UseItem(selectedItem);
             cell.Redraw(BuildDrawData(selectedItem));
         }
     }
@@ -85,6 +84,5 @@ public class InventoryView : MonoBehaviour
             };
             pairs.Add(pair);
         }
-
     }
 }

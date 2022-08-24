@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            AddItem(item);
+            AddItem(item, 1);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -46,13 +46,13 @@ public class Inventory : MonoBehaviour
         return usedItems.Contains(item);
     }
 
-    public void AddItem(Item item)
+    public void AddItem(Item item, int count)
     {
         foreach (ItemInfo info in itemsInfo)
         {
             if (info.item == item)
             {
-                info.count++;
+                info.count += count;
                 break;
             }
             else if (info.item == null)

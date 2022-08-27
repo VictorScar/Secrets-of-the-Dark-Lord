@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class FindingsGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Map map;
+    [SerializeField] FindingCardEffect[] findings;
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+
+    }
+   
+
+    public void GenerateFindings()
+    {
+        for (int i = 0; i < findings.Length; i++)
+        {
+
+        }
     }
 }

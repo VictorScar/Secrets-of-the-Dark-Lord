@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Floor : Cell
 {
-    [SerializeField] new Renderer renderer;
+    [SerializeField] protected new Renderer renderer;
     [OneLine]
     [SerializeField] ObjectWithChance<Material>[] materials;
     void Start()

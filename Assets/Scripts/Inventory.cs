@@ -58,7 +58,7 @@ public class Inventory : MonoBehaviour
             else if (info.item == null)
             {
                 info.item = item;
-                info.count = 1;
+                info.count = count;
                 break;
             }
         }

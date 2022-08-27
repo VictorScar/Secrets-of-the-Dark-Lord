@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class FindingsGenerator : MonoBehaviour
 {
-    [SerializeField] Map map;
-    [SerializeField] FindingCardEffect[] findings;
-    void Start()
+    [SerializeField, OneLine] List<Finding> findingsPack;
+    public Finding GenerateFinding()
     {
-
-    }
-
-
-    void Update()
-    {
-
-    }
-   
-
-    public void GenerateFindings()
-    {
-        for (int i = 0; i < findings.Length; i++)
+        int findingPackCount = findingsPack.Count;
+        if (findingPackCount == 0)
         {
-
+            return null;
         }
+
+        int index = Random.Range(0, findingPackCount);
+        Finding finding = findingsPack[index];
+        findingsPack.RemoveAt(index);
+        return finding;
     }
 }

@@ -1,7 +1,8 @@
 ﻿public enum WearSlot
 {
     None,
-    OneHand,
+    LeftHand,
+    RightHand,
     BothHands,
     Head,
     Chest,

@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] List<Item> usedItems = new List<Item>();
-    [SerializeField, OneLine] ItemInfo[] itemsInfo = new ItemInfo[30];
+    [SerializeField] List<InventorySlot> usedSlots = new List<InventorySlot>();
+    [SerializeField, OneLine] InventorySlot[] inventorySlots = new InventorySlot[30];
     [SerializeField] Item item;
+    public event Action OnInventoryUpdated;
 
-    public ItemInfo[] ItemsInfo { get => itemsInfo; }
+    public InventorySlot[] InventorySlots { get => inventorySlots; }
 
     private void Update()
     {
@@ -24,61 +26,101 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UseItem(ItemInfo info)
+    public void UseItem(InventorySlot inventorySlot)
     {
-        if (info.item.IsWearable)
+        //Проверка надеваемый ли предмет
+        if (inventorySlot.item.IsWearable)
         {
-            if (info.isWeared)
+            //Проходим по списку используемых предметов и получаем все предметы такого же или соответствующих типов
+            //и снимаем их
+            var wearedSlots = GetWearedMatchingSlots(inventorySlot.item.WearSlot).ToArray();
+
+            foreach (InventorySlot wearedSlot in wearedSlots)
             {
-                usedItems.Remove(info.item);
-                info.isWeared = false;
+                usedSlots.Remove(wearedSlot);
+                wearedSlot.isWeared = false;
             }
-            else
+
+            //Надеваем текущий предмет
+            if (!wearedSlots.Contains(inventorySlot))
             {
-                usedItems.Add(info.item);
-                info.isWeared = true;
+                usedSlots.Add(inventorySlot);
+                inventorySlot.isWeared = true;
             }
+
+            OnInventoryUpdated?.Invoke();
         }
     }
 
-    public bool IsWeared(Item item)
+    /// <summary>
+    /// Функция, возвращающая коллекцию предметов, препятствующих надеванию предмета с типом WearSlot (из параметров)
+    /// Если получен предмет типа "Двуручное оружие", то вернутся предметы с типами "Двуручное" и для "левой и правой руки"
+    /// </summary>
+    IEnumerable<InventorySlot> GetWearedMatchingSlots(WearSlot wearSlot)
     {
-        return usedItems.Contains(item);
+        foreach (InventorySlot inventorySlot in usedSlots)
+        {
+            //Проверяем наличие предмета с типом, указанным в параметрах метода
+            if (inventorySlot.item.WearSlot == wearSlot)
+            {
+                yield return inventorySlot;
+            }
+            //Проверяем указанный тип на соответствие типу "Двуручное оружие". Если соответствие есть, то проверяем
+            //наличие предметов с типами для левой и правой руки
+            else if (wearSlot == WearSlot.BothHands)
+            {
+                if (inventorySlot.item.WearSlot == WearSlot.LeftHand || inventorySlot.item.WearSlot == WearSlot.RightHand)
+                {
+                    yield return inventorySlot;
+                }
+            }
+            //Проверяем указанный тип на соответствие типам "Левая" или "Правая рука". Если соответствие есть, то проверяем
+            //наличие предмета с типом "Двуручное оружие"
+            else if (wearSlot == WearSlot.LeftHand || wearSlot == WearSlot.RightHand)
+            {
+                if (inventorySlot.item.WearSlot == WearSlot.BothHands)
+                {
+                    yield return inventorySlot;
+                }
+            }
+        }
     }
 
     public void AddItem(Item item, int count)
     {
-        foreach (ItemInfo info in itemsInfo)
+        foreach (InventorySlot inventorySlot in inventorySlots)
         {
-            if (info.item == item)
+            if (inventorySlot.item == item)
             {
-                info.count += count;
+                inventorySlot.count += count;
                 break;
             }
-            else if (info.item == null)
+            else if (inventorySlot.item == null)
             {
-                info.item = item;
-                info.count = count;
+                inventorySlot.item = item;
+                inventorySlot.count = count;
                 break;
             }
         }
+        OnInventoryUpdated?.Invoke();
     }
 
     public void RemoveItem(Item item)
     {
-        foreach (ItemInfo info in itemsInfo)
+        foreach (InventorySlot inventorySlot in inventorySlots)
         {
-            if (info.item == item)
+            if (inventorySlot.item == item)
             {
-                info.count--;
-                if (info.count < 1)
+                inventorySlot.count--;
+                if (inventorySlot.count < 1)
                 {
-                    info.item = null;
-                    info.isWeared = false;
-                    usedItems.Remove(item);
+                    inventorySlot.item = null;
+                    inventorySlot.isWeared = false;
+                    usedSlots.Remove(inventorySlot);
                 }
                 break;
             }
         }
+        OnInventoryUpdated?.Invoke();
     }
 }

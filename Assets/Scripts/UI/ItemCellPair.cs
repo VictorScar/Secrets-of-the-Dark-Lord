@@ -6,5 +6,5 @@ using UnityEngine;
 public class ItemCellPair
 {
     public CellUI cell;
-    public ItemInfo info;
+    public InventorySlot slot;
 }

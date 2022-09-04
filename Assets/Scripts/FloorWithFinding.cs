@@ -19,7 +19,7 @@ public class FloorWithFinding : Floor
             }
 
             renderer.material = emptyFindingMaterial;
-            //haveFinding = false;
+            haveFinding = false;
         }
     }
 }

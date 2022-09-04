@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemInfo
+public class InventorySlot
 {
     public Item item;
     public int count;

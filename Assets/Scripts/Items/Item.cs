@@ -17,5 +17,6 @@ public class Item : ScriptableObject
     [SerializeField] public float defence;
     [SerializeField] public int price;
     public Sprite Icon { get => icon; }
-    public bool IsWearable { get => wearSlot != WearSlot.None; }
+    public bool IsWearable { get => WearSlot != WearSlot.None; }
+    public WearSlot WearSlot { get => wearSlot;}
 }

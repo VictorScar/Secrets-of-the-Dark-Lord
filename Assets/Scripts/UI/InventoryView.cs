@@ -14,6 +14,13 @@ public class InventoryView : MonoBehaviour
     private void Start()
     {
         InitInventory();
+        PlayerInventory.OnInventoryUpdated += () =>
+        {
+            if (isActiveAndEnabled)
+            {
+                ShowInventory();
+            }
+        };
     }
 
     private void InitInventory()
@@ -22,16 +29,16 @@ public class InventoryView : MonoBehaviour
         {
             ItemCellPair pair = pairs[i];
             pair.cell.onClick += OnCellClick;
-            pair.info = PlayerInventory.ItemsInfo[i];
+            pair.slot = PlayerInventory.InventorySlots[i];
         }
     }
 
     void ShowInventory()
     {
         //Получение пар с не пустыми значениями предметов из инвенторя игрока
-        ItemCellPair[] filledPairs = pairs.Where(pair => pair.info.item != null).ToArray();
+        ItemCellPair[] filledPairs = pairs.Where(pair => pair.slot.item != null).ToArray();
 
-        //С целью оптимизации (не обьрабатывать пустые неизменившиеся ячейки) определяем количество перерисовываемых объектов
+        //С целью оптимизации (не обрабатывать пустые неизменившиеся ячейки) определяем количество перерисовываемых объектов
         int redrawCellsCount = Mathf.Max(pastPairCount, filledPairs.Length);
 
         //В цикле берем каждую пару, которая содержит предметы или менялась с последней прорисовки
@@ -39,7 +46,7 @@ public class InventoryView : MonoBehaviour
         for (int i = 0; i < redrawCellsCount; i++)
         {
             ItemCellPair pair = pairs[i];
-            pair.cell.Redraw(BuildDrawData(pair.info));
+            pair.cell.Redraw(BuildDrawData(pair.slot));
         }
 
         //Сохранение количества заполненных пар
@@ -49,13 +56,13 @@ public class InventoryView : MonoBehaviour
     /// <summary>
     /// Функция создания набора данных о прорисовке ячейки инвентаря в зависимости от текущих состояний предмета
     /// </summary>
-    public CellDrawData BuildDrawData(ItemInfo info)
+    public CellDrawData BuildDrawData(InventorySlot slot)
     {
         CellDrawData data = new CellDrawData();
-        data.icon = info.item?.Icon;
-        data.iconColor = info.item != null ? Color.white : Color.clear;
-        data.countText = info.count >= 1 ? info.count.ToString() : string.Empty;
-        data.highlightColor = info.isWeared ? Color.red : Color.white;
+        data.icon = slot.item?.Icon;
+        data.iconColor = slot.item != null ? Color.white : Color.clear;
+        data.countText = slot.count >= 1 ? slot.count.ToString() : string.Empty;
+        data.highlightColor = slot.isWeared ? Color.red : Color.white;
         return data;
     }
 
@@ -66,12 +73,12 @@ public class InventoryView : MonoBehaviour
 
     private void OnCellClick(CellUI cell)
     {
-        ItemInfo selectedItem = pairs.First(p => cell == p.cell).info;
+        InventorySlot selectedItem = pairs.First(p => cell == p.cell).slot;
 
         if (selectedItem.item != null)
         {
             PlayerInventory.UseItem(selectedItem);
-            cell.Redraw(BuildDrawData(selectedItem));
+            //cell.Redraw(BuildDrawData(selectedItem));
         }
     }
 
@@ -83,7 +90,7 @@ public class InventoryView : MonoBehaviour
             ItemCellPair pair = new ItemCellPair()
             {
                 cell = cell,
-                info = null
+                slot = null
             };
             pairs.Add(pair);
         }

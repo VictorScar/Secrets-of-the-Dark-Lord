@@ -2987,6 +2987,8 @@ MonoBehaviour:
     itemCount: 2
   - item: {fileID: 11400000, guid: a4c294839b1811242aa98fbd152c4eb1, type: 2}
     itemCount: 2
+  - item: {fileID: 11400000, guid: 0e315ad98be4563478c65749eed22ffa, type: 2}
+    itemCount: 2
 --- !u!224 &1455642523 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3548412980567901317, guid: 5648f88d366c1ea4cac26bf649aa4cae, type: 3}

@@ -2953,40 +2953,18 @@ MonoBehaviour:
   findingsPack:
   - item: {fileID: 11400000, guid: ddbe895c4f38ae64e8f0d5b32917a3b1, type: 2}
     itemCount: 3
-  - item: {fileID: 11400000, guid: 565135641a597ff4587a7fcfd2c31348, type: 2}
-    itemCount: 7
   - item: {fileID: 11400000, guid: 96541f4974fd081458f670e2af83fa5d, type: 2}
     itemCount: 1
-  - item: {fileID: 11400000, guid: 6352b2620a399964385e6b3a52e13fa4, type: 2}
-    itemCount: 5
   - item: {fileID: 11400000, guid: d7aec176e37b2df4f97c7df7b66ec399, type: 2}
     itemCount: 1
-  - item: {fileID: 11400000, guid: 651089be6aafa28438edaf3eb5c3870f, type: 2}
-    itemCount: 2
   - item: {fileID: 11400000, guid: 4dfc27bdf0df0804c90959acf1e467f5, type: 2}
     itemCount: 5
-  - item: {fileID: 11400000, guid: a17cacb2cba314d48a5a09ffcd9adbe2, type: 2}
-    itemCount: 3
-  - item: {fileID: 11400000, guid: a5776ab6b8047ff4199e7c065580067b, type: 2}
-    itemCount: 1
   - item: {fileID: 11400000, guid: 973234e1eb6c09543975aa03f8d8a246, type: 2}
-    itemCount: 1
-  - item: {fileID: 11400000, guid: 5b7bc265e3dbe6949a09758e75d7e11d, type: 2}
     itemCount: 1
   - item: {fileID: 11400000, guid: 601f30474d9fa074e8ebec6c0419c6fa, type: 2}
     itemCount: 1
   - item: {fileID: 11400000, guid: 65ce16a68c226344198c86d3b4f524ae, type: 2}
     itemCount: 9
-  - item: {fileID: 11400000, guid: a4c294839b1811242aa98fbd152c4eb1, type: 2}
-    itemCount: 2
-  - item: {fileID: 11400000, guid: a4c294839b1811242aa98fbd152c4eb1, type: 2}
-    itemCount: 2
-  - item: {fileID: 11400000, guid: a4c294839b1811242aa98fbd152c4eb1, type: 2}
-    itemCount: 2
-  - item: {fileID: 11400000, guid: a4c294839b1811242aa98fbd152c4eb1, type: 2}
-    itemCount: 2
-  - item: {fileID: 11400000, guid: a4c294839b1811242aa98fbd152c4eb1, type: 2}
-    itemCount: 2
   - item: {fileID: 11400000, guid: 0e315ad98be4563478c65749eed22ffa, type: 2}
     itemCount: 2
 --- !u!224 &1455642523 stripped
@@ -3855,152 +3833,152 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pairs:
   - cell: {fileID: 1580192568}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1455642526}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1808587394}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 925414151}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 750029344}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 57137859}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1833316307}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1255816102}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1457464439}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1286889347}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 2047583764}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1979526298}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1890409357}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 766732101}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 832036296}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 632560682}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1737968280}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1885183159}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 572969530}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 838755327}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1963765937}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 763870405}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1569423921}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1031732544}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1481970292}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 861016796}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1024315807}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1545569369}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 1930322824}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0
   - cell: {fileID: 643905829}
-    info:
+    slot:
       item: {fileID: 0}
       count: 0
       isWeared: 0

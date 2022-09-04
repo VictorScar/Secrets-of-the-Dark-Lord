@@ -18,4 +18,18 @@ public class FindingsGenerator : MonoBehaviour
         findingsPack.RemoveAt(index);
         return finding;
     }
+
+#if UNITY_EDITOR
+    [NaughtyAttributes.Button]
+    void CleanNulls()
+    {
+        for (int i = findingsPack.Count - 1; i >= 0; i--)
+        {
+            if (findingsPack[i].Item == null)
+            {
+                findingsPack.RemoveAt(i);
+            }
+        }
+    }
+#endif
 }

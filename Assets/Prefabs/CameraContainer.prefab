@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 8.2, z: -2.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2760184718251744563}
   m_Father: {fileID: 223393703581094400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 58.019, y: 0, z: 0}
@@ -130,3 +131,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  findingEffectPosition: {fileID: 2760184718251744563}
+  camera: {fileID: 6652925392748374400}
+  speed: 3
+--- !u!1 &2435164350212526920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2760184718251744563}
+  m_Layer: 0
+  m_Name: FindingEffectPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2760184718251744563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2435164350212526920}
+  m_LocalRotation: {x: 0.00000026517085, y: 0.7071067, z: 0.7071069, w: 0.00000025566644}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8554378043413353527}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}

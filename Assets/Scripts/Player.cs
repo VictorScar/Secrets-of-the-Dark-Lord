@@ -10,14 +10,18 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 0.5f;
     [SerializeField] Animator animator;
     [SerializeField] Inventory inventory;
-   
+
     public bool IsMoving { get; private set; }
     public Inventory Inventory { get => inventory; }
 
-    void Start()
+    void Awake()
+    {
+        Game.Instance.Player = this;
+    }
+
+    private void Start()
     {
         currentCell = startingCell;
-        Game.Instance.Player = this;
     }
 
     public void Move(MoveDirection direction)

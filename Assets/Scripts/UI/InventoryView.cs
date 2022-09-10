@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
 using System;
+using System.Text;
 
 public class InventoryView : MonoBehaviour
 {
     [SerializeField] List<ItemCellPair> pairs = new List<ItemCellPair>();
     Inventory PlayerInventory { get => Game.Instance.Player.Inventory; }
     int pastPairCount = 0;
+
+    [Header("Info Panel")]
+    [SerializeField] GameObject infoPanel;
+    [SerializeField] TMPro.TMP_Text infoText;
 
     private void Start()
     {
@@ -29,6 +34,8 @@ public class InventoryView : MonoBehaviour
         {
             ItemCellPair pair = pairs[i];
             pair.cell.onClick += OnCellClick;
+            pair.cell.onPointerEnter += ShowItemInfo;
+            pair.cell.onPointerExit += HideItemInfo;
             pair.slot = PlayerInventory.InventorySlots[i];
         }
     }
@@ -80,6 +87,23 @@ public class InventoryView : MonoBehaviour
             PlayerInventory.UseItem(selectedItem);
             //cell.Redraw(BuildDrawData(selectedItem));
         }
+    }
+
+    public void ShowItemInfo(CellUI cell)
+    {
+        InventorySlot pointerItem = pairs.First(p => cell == p.cell).slot;
+        if (pointerItem.item != null)
+        {
+            var cellRectTransform = cell.transform as RectTransform;
+            var infoPanelRectTransform = infoPanel.transform as RectTransform;
+            infoPanelRectTransform.anchoredPosition = cellRectTransform.anchoredPosition;
+            infoText.text = DescriptionBuilder.GetItemDescription(pointerItem);
+            infoPanel.SetActive(true);
+        }
+    }
+    public void HideItemInfo(CellUI cell)
+    {
+        infoPanel.SetActive(false);
     }
 
     private void Reset()

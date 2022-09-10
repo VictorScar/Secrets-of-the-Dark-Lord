@@ -12,10 +12,12 @@ public class CellUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     [SerializeField] Image frameImage;
     [SerializeField] Image backgroundImage;
     [SerializeField] TMP_Text itemCount;
-    Color backgroundColor;
     [SerializeField] Color backgroundColorHovered;
+    Color backgroundColor;
 
     public event Action<CellUI> onClick;
+    public event Action<CellUI> onPointerEnter;
+    public event Action<CellUI> onPointerExit;
 
     private void Start()
     {
@@ -30,11 +32,13 @@ public class CellUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     public void OnPointerEnter(PointerEventData eventData)
     {
         backgroundImage.color = backgroundColorHovered;
+        onPointerEnter?.Invoke(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         backgroundImage.color = backgroundColor;
+        onPointerExit?.Invoke(this);
     }
 
     public void HighlightCell()

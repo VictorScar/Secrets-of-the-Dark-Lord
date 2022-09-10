@@ -7,16 +7,20 @@ using UnityEngine.UI;
 public class Item : ScriptableObject
 {
     [SerializeField] Sprite icon;
-    [SerializeField] public string itemName;
+    [SerializeField] private string itemName;
 
     [Header("Параметры использования")]
     [SerializeField] WearSlot wearSlot;
 
     [Header("Характеристики")]
-    [SerializeField] public float damage;
-    [SerializeField] public float defence;
-    [SerializeField] public int price;
+    [SerializeField] private float attack;
+    [SerializeField] private float defence;
+    [SerializeField] private int price;
     public Sprite Icon { get => icon; }
     public bool IsWearable { get => WearSlot != WearSlot.None; }
     public WearSlot WearSlot { get => wearSlot;}
+    public string ItemName { get => itemName;}
+    public float Attack { get => attack;}
+    public float Defence { get => defence;}
+    public int Price { get => price;}
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public static class DescriptionBuilder
 {
+    /// <summary>
+    /// Универсальный метод. Формирует информацию о предмете
+    /// </summary>
     public static string GetItemDescription(Item item, int itemCount)
     {
         StringBuilder stringBuilder = new StringBuilder();
@@ -18,11 +21,17 @@ public static class DescriptionBuilder
         return stringBuilder.ToString();
     }
 
+    /// <summary>
+    /// Формирует информацию о находке
+    /// </summary>
     public static string GetItemDescription(Finding finding)
     {
         return GetItemDescription(finding.Item, finding.ItemCount);
     }
 
+    /// <summary>
+    /// Формирует информацию о слоте
+    /// </summary>
     public static string GetItemDescription(InventorySlot slot)
     {
         return GetItemDescription(slot.item, slot.count);

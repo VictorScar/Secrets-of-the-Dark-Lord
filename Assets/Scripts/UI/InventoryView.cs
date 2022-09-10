@@ -16,7 +16,7 @@ public class InventoryView : MonoBehaviour
     [SerializeField] GameObject infoPanel;
     [SerializeField] TMPro.TMP_Text infoText;
 
-    private void Start()
+    private void Awake()
     {
         InitInventory();
         PlayerInventory.OnInventoryUpdated += () =>
@@ -34,8 +34,8 @@ public class InventoryView : MonoBehaviour
         {
             ItemCellPair pair = pairs[i];
             pair.cell.onClick += OnCellClick;
-            pair.cell.onPointerEnter += ShowItemInfo;
-            pair.cell.onPointerExit += HideItemInfo;
+            pair.cell.onPointerEnter += ShowItemInfoPanel;
+            pair.cell.onPointerExit += HideItemInfoPanel;
             pair.slot = PlayerInventory.InventorySlots[i];
         }
     }
@@ -47,6 +47,10 @@ public class InventoryView : MonoBehaviour
 
         //С целью оптимизации (не обрабатывать пустые неизменившиеся ячейки) определяем количество перерисовываемых объектов
         int redrawCellsCount = Mathf.Max(pastPairCount, filledPairs.Length);
+        if (redrawCellsCount < 1)
+        {
+            redrawCellsCount = 1;
+        }
 
         //В цикле берем каждую пару, которая содержит предметы или менялась с последней прорисовки
         //и вызываем функию ее перерисовки, с аргументами, возвращенными функцией обновления данных о прорисовке
@@ -89,9 +93,15 @@ public class InventoryView : MonoBehaviour
         }
     }
 
-    public void ShowItemInfo(CellUI cell)
+    /// <summary>
+    /// Функция, отображающая информационную панель с характерстиками предмета в инвентаре, на который наведен курсор
+    /// </summary>
+    /// <param name="cell"></param>
+    public void ShowItemInfoPanel(CellUI cell)
     {
         InventorySlot pointerItem = pairs.First(p => cell == p.cell).slot;
+
+        //Если в ячейке есть какой-то предмет
         if (pointerItem.item != null)
         {
             var cellRectTransform = cell.transform as RectTransform;
@@ -101,7 +111,7 @@ public class InventoryView : MonoBehaviour
             infoPanel.SetActive(true);
         }
     }
-    public void HideItemInfo(CellUI cell)
+    public void HideItemInfoPanel(CellUI cell)
     {
         infoPanel.SetActive(false);
     }

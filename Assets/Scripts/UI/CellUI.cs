@@ -58,5 +58,4 @@ public class CellUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
         itemCount.text = data.countText;
         frameImage.color = data.highlightColor;
     }
-
 }

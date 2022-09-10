@@ -16,6 +16,7 @@ public class PlayerCamera : MonoBehaviour
     {
         Game.Instance.PlayerCamera = this;
     }
+
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);

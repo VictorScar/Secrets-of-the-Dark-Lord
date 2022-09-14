@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class InventorySlot
+namespace SODL.Inventory
 {
-    public Item item;
-    public int count;
-    public bool isWeared;
+    [System.Serializable]
+    public class InventorySlot
+    {
+        public Item item;
+        public int count;
+        public bool isWeared;
+    }
 }

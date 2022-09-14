@@ -1,12 +1,14 @@
-﻿public enum WearSlot
+﻿namespace SODL.Inventory
 {
-    None,
-    LeftHand,
-    RightHand,
-    BothHands,
-    Head,
-    Chest,
-    Legs,
-    Wrists,
+    public enum WearSlot
+    {
+        None,
+        LeftHand,
+        RightHand,
+        BothHands,
+        Head,
+        Chest,
+        Legs,
+        Wrists,
+    }
 }
-

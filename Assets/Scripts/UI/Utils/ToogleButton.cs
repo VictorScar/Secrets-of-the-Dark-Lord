@@ -4,19 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToogleButton : MonoBehaviour
+namespace SODL.UI.Utills
 {
-    [SerializeField] GameObject toggleObject;
-    [SerializeField] Button button;
-
-
-    private void Awake()
+    public class ToogleButton : MonoBehaviour
     {
-        button.onClick.AddListener(ToggleInventory);
-    }
+        [SerializeField] GameObject toggleObject;
+        [SerializeField] Button button;
 
-    private void ToggleInventory()
-    {
-        toggleObject.SetActive(!toggleObject.activeSelf);
+
+        private void Awake()
+        {
+            button.onClick.AddListener(ToggleInventory);
+        }
+
+        private void ToggleInventory()
+        {
+            toggleObject.SetActive(!toggleObject.activeSelf);
+        }
     }
 }

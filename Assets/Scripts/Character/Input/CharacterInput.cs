@@ -2,27 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CharacterInput : MonoBehaviour
+namespace SODL.Character.Input
 {
-    [SerializeField] protected Player player;
-
-    void Update()
+    public abstract class CharacterInput : MonoBehaviour
     {
-        if (!player.IsMoving)
+        [SerializeField] protected Player player;
+
+        void Update()
         {
-            MoveDirection direction = GetCommand();
-            if (direction != MoveDirection.None)
+            if (!player.IsMoving)
             {
-                player.Move(direction);
+                MoveDirection direction = GetCommand();
+                if (direction != MoveDirection.None)
+                {
+                    player.Move(direction);
+                }
+
             }
-
         }
-    }
 
-    protected abstract MoveDirection GetCommand();
+        protected abstract MoveDirection GetCommand();
 
-    private void Reset()
-    {
-        player = GetComponent<Player>();
+        private void Reset()
+        {
+            player = GetComponent<Player>();
+        }
     }
 }

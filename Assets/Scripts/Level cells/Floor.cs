@@ -1,24 +1,29 @@
+using SODL.Character;
+using SODL.Utills;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Floor : Cell
+namespace SODL.Cells
 {
-    [SerializeField] protected new Renderer renderer;
-    [OneLine]
-    [SerializeField] ObjectWithChance<Material>[] materials;
-    void Start()
+    public class Floor : Cell
     {
-
-        if (renderer != null && materials != null && materials.Length > 0)
+        [SerializeField] protected new Renderer renderer;
+        [OneLine]
+        [SerializeField] ObjectWithChance<Material>[] materials;
+        void Start()
         {
-            renderer.material = Randomizer.RandomWithChance(materials);
+
+            if (renderer != null && materials != null && materials.Length > 0)
+            {
+                renderer.material = Randomizer.RandomWithChance(materials);
+            }
         }
-    }
 
-    public override bool OnBeforePlayerMove(Player player)
-    {
-        return true;
-    }
+        public override bool OnBeforePlayerMove(Player player)
+        {
+            return true;
+        }
 
+    }
 }

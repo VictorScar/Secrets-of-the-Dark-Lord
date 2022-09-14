@@ -1,35 +1,39 @@
+using SODL.Utills;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FindingsGenerator : MonoBehaviour
+namespace SODL.Finding
 {
-    [SerializeField, OneLine] List<Finding> findingsPack;
-    public Finding GenerateFinding()
+    public class FindingsGenerator : MonoBehaviour
     {
-        int findingPackCount = findingsPack.Count;
-        if (findingPackCount == 0)
+        [SerializeField, OneLine] List<FindingInfo> findingsPack;
+        public FindingInfo GenerateFinding()
         {
-            return null;
-        }
+            int findingPackCount = findingsPack.Count;
+            if (findingPackCount == 0)
+            {
+                return null;
+            }
 
-        int index = Random.Range(0, findingPackCount);
-        Finding finding = findingsPack[index];
-        findingsPack.RemoveAt(index);
-        return finding;
-    }
+            int index = Random.Range(0, findingPackCount);
+            FindingInfo finding = findingsPack[index];
+            findingsPack.RemoveAt(index);
+            return finding;
+        }
 
 #if UNITY_EDITOR
-    [NaughtyAttributes.Button]
-    void CleanNulls()
-    {
-        for (int i = findingsPack.Count - 1; i >= 0; i--)
+        [NaughtyAttributes.Button]
+        void CleanNulls()
         {
-            if (findingsPack[i].Item == null)
+            for (int i = findingsPack.Count - 1; i >= 0; i--)
             {
-                findingsPack.RemoveAt(i);
+                if (findingsPack[i].Item == null)
+                {
+                    findingsPack.RemoveAt(i);
+                }
             }
         }
-    }
 #endif
+    }
 }

@@ -1,34 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
+using SODL.Character;
+using SODL.Finding;
 using UnityEngine;
 
-public class Game : MonoBehaviour
+namespace SODL.Core
 {
-    [SerializeField] private Player player;
-    [SerializeField] private PlayerCamera playerCamera;
-    [SerializeField] private FindingsGenerator findingsGenerator;
-    [SerializeField] private EffectSystem effectSystem;
-
-    public static Game Instance { get; private set; }
-    public Player Player
+    public class Game : MonoBehaviour
     {
-        get { return player; }
-        set { player = value; }
-    }
+        [SerializeField] private Player player;
+        [SerializeField] private PlayerCamera playerCamera;
+        [SerializeField] private FindingsGenerator findingsGenerator;
+        [SerializeField] private EffectSystem effectSystem;
 
-    public FindingsGenerator FindingsGenerator
-    {
-        get { return findingsGenerator; }
-    }
-
-    public PlayerCamera PlayerCamera { get => playerCamera; set => playerCamera = value; }
-    public EffectSystem EffectSystem { get => effectSystem; }
-
-    private void Awake()
-    {
-        if (Instance == null)
+        public static Game Instance { get; private set; }
+        public Player Player
         {
-            Instance = this;
+            get { return player; }
+            set { player = value; }
+        }
+
+        public FindingsGenerator FindingsGenerator
+        {
+            get { return findingsGenerator; }
+        }
+
+        public PlayerCamera PlayerCamera { get => playerCamera; set => playerCamera = value; }
+        public EffectSystem EffectSystem { get => effectSystem; }
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
         }
     }
 }

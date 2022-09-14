@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
-public class OneLineAttribute : PropertyAttribute
+namespace SODL.Utills
 {
+    public class OneLineAttribute : PropertyAttribute
+    {
+    }
 }

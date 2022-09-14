@@ -1,31 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityInput = UnityEngine.Input;
 
-public class KeyboardInput : CharacterInput
+namespace SODL.Character.Input
 {
-    protected override MoveDirection GetCommand()
+    public class KeyboardInput : CharacterInput
     {
+        protected override MoveDirection GetCommand()
+        {
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            return MoveDirection.Up;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            return MoveDirection.Down;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            return MoveDirection.Left;
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            return MoveDirection.Right;
-        }
-        else
-        {
-            return MoveDirection.None;
+            if (UnityInput.GetKeyDown(KeyCode.UpArrow))
+            {
+                return MoveDirection.Up;
+            }
+            else if (UnityInput.GetKeyDown(KeyCode.DownArrow))
+            {
+                return MoveDirection.Down;
+            }
+            else if (UnityInput.GetKeyDown(KeyCode.LeftArrow))
+            {
+                return MoveDirection.Left;
+            }
+            else if (UnityInput.GetKeyDown(KeyCode.RightArrow))
+            {
+                return MoveDirection.Right;
+            }
+            else
+            {
+                return MoveDirection.None;
+            }
         }
     }
 }

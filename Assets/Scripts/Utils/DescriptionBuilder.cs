@@ -1,39 +1,44 @@
+using SODL.Finding;
+using SODL.Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-public static class DescriptionBuilder
+namespace SODL.Utills
 {
-    /// <summary>
-    /// Универсальный метод. Формирует информацию о предмете
-    /// </summary>
-    public static string GetItemDescription(Item item, int itemCount)
+    public static class DescriptionBuilder
     {
-        StringBuilder stringBuilder = new StringBuilder();
+        /// <summary>
+        /// Универсальный метод. Формирует информацию о предмете
+        /// </summary>
+        public static string GetItemDescription(Item item, int itemCount)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.AppendLine($"Название: {item.ItemName}");
-        stringBuilder.AppendLine($"Количество: {itemCount}");
-        stringBuilder.AppendLine($"Атака: {item.Attack}");
-        stringBuilder.AppendLine($"Защита: {item.Defence}");
-        stringBuilder.AppendLine($"Стоимость: {item.Price}");
+            stringBuilder.AppendLine($"Название: {item.ItemName}");
+            stringBuilder.AppendLine($"Количество: {itemCount}");
+            stringBuilder.AppendLine($"Атака: {item.Attack}");
+            stringBuilder.AppendLine($"Защита: {item.Defence}");
+            stringBuilder.AppendLine($"Стоимость: {item.Price}");
 
-        return stringBuilder.ToString();
-    }
+            return stringBuilder.ToString();
+        }
 
-    /// <summary>
-    /// Формирует информацию о находке
-    /// </summary>
-    public static string GetItemDescription(Finding finding)
-    {
-        return GetItemDescription(finding.Item, finding.ItemCount);
-    }
+        /// <summary>
+        /// Формирует информацию о находке
+        /// </summary>
+        public static string GetItemDescription(FindingInfo finding)
+        {
+            return GetItemDescription(finding.Item, finding.ItemCount);
+        }
 
-    /// <summary>
-    /// Формирует информацию о слоте
-    /// </summary>
-    public static string GetItemDescription(InventorySlot slot)
-    {
-        return GetItemDescription(slot.item, slot.count);
+        /// <summary>
+        /// Формирует информацию о слоте
+        /// </summary>
+        public static string GetItemDescription(InventorySlot slot)
+        {
+            return GetItemDescription(slot.item, slot.count);
+        }
     }
 }

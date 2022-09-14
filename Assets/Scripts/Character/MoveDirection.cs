@@ -1,8 +1,11 @@
-﻿public enum MoveDirection
+﻿namespace SODL.Character
 {
-    None,
-    Up,
-    Down,
-    Left,
-    Right
+    public enum MoveDirection
+    {
+        None,
+        Up,
+        Down,
+        Left,
+        Right
+    }
 }

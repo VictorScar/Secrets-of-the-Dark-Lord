@@ -1,52 +1,57 @@
+using SODL.Character;
+using SODL.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Cell
+namespace SODL.Cells
 {
-    public bool Opened { get; protected set; }
-
-    [SerializeField] Animator doorAnimator;
-
-
-    public override void Init(Map map)
+    public class Door : Cell
     {
-        base.Init(map);
-        OrientDoor();
-    }
+        public bool Opened { get; protected set; }
 
-    private void OrientDoor()
-    {
-        if (GetBottomCell() is Floor)
+        [SerializeField] Animator doorAnimator;
+
+
+        public override void Init(Map map)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
+            base.Init(map);
+            OrientDoor();
         }
 
-    }
-
-    public void OpenDoor()
-    {
-        Opened = true;
-        doorAnimator.Play("Open");
-    }
-    public void CloseDoor()
-    {
-        Opened = false;
-        doorAnimator.Play("Closed");
-    }
-
-    public override bool OnBeforePlayerMove(Player player)
-    {
-        if (!Opened)
+        private void OrientDoor()
         {
-            OpenDoor();
-            return false;
+            if (GetBottomCell() is Floor)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+
         }
-        return true;
+
+        public void OpenDoor()
+        {
+            Opened = true;
+            doorAnimator.Play("Open");
+        }
+        public void CloseDoor()
+        {
+            Opened = false;
+            doorAnimator.Play("Closed");
+        }
+
+        public override bool OnBeforePlayerMove(Player player)
+        {
+            if (!Opened)
+            {
+                OpenDoor();
+                return false;
+            }
+            return true;
+        }
     }
 }

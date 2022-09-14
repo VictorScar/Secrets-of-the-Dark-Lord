@@ -1,10 +1,14 @@
+using SODL.Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ItemCellPair
+namespace SODL.UI.Inventory
 {
-    public CellUI cell;
-    public InventorySlot slot;
+    [System.Serializable]
+    public class ItemCellPair
+    {
+        public CellUI cell;
+        public InventorySlot slot;
+    }
 }

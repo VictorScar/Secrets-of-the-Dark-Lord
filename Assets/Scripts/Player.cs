@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +9,19 @@ public class Player : MonoBehaviour
     Cell currentCell;
     [SerializeField] float speed = 0.5f;
     [SerializeField] Animator animator;
-    public bool IsMoving { get; private set; }
+    [SerializeField] Inventory inventory;
 
-    void Start()
+    public bool IsMoving { get; private set; }
+    public Inventory Inventory { get => inventory; }
+
+    void Awake()
+    {
+        Game.Instance.Player = this;
+    }
+
+    private void Start()
     {
         currentCell = startingCell;
-
     }
 
     public void Move(MoveDirection direction)
@@ -66,7 +73,7 @@ public class Player : MonoBehaviour
 
     IEnumerator MoveToCell(Cell nextCell)
     {
-        //TODO: Переделать в дотвин
+        //TODO: РџРµСЂРµРґРµР»Р°С‚СЊ РІ РґРѕС‚РІРёРЅ
 
         while (transform.position != nextCell.transform.position)
         {

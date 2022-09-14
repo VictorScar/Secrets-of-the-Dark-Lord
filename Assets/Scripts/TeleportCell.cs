@@ -5,7 +5,7 @@ using UnityEngine;
 public class TeleportCell : Floor
 {
     [SerializeField] Player playerPrefab;
-    [SerializeField] CameraFollow cameraFollowPrefab;
+    [SerializeField] PlayerCamera cameraFollowPrefab;
 
 
     public override void Init(Map map)
@@ -13,7 +13,7 @@ public class TeleportCell : Floor
         base.Init(map);
         Player instancePlayer = Instantiate(playerPrefab, transform.position, Quaternion.identity);
         instancePlayer.startingCell = this;
-        CameraFollow cameraFollowInstance = Instantiate(cameraFollowPrefab, instancePlayer.transform.position, Quaternion.identity);
+        PlayerCamera cameraFollowInstance = Instantiate(cameraFollowPrefab, instancePlayer.transform.position, Quaternion.identity);
         cameraFollowInstance.target = instancePlayer;
     }
 }

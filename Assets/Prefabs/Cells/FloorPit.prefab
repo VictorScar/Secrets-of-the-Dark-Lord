@@ -128,3 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007b66db85dcbd94b88ed3d3205fbf08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coord: {x: 0, y: 0}
+  actionType: 1
+  renderer: {fileID: 0}
+  materials: []

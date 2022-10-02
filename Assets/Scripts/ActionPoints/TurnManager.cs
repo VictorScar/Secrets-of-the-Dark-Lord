@@ -15,7 +15,9 @@ namespace SODL.ActionPoints
 
         private void Start()
         {
-            //actionManager = Game.Instance
+            actionManager = Game.Instance.ActionManager;
+            RegisterCharacter(Game.Instance.Player);
+            actionManager.StartNewTurn(TurnOwner);
         }
 
         public void RegisterCharacter(GameCharacter character)

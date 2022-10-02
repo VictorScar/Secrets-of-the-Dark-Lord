@@ -13,9 +13,9 @@ namespace SODL.Cells
         [SerializeField] Material emptyFindingMaterial;
 
 
-        public override void OnPlayerMove(Player player)
+        public override void OnCharacterMove(GameCharacter character)
         {
-            base.OnPlayerMove(player);
+            base.OnCharacterMove(character);
             if (haveFinding)
             {
                 Game game = Game.Instance;
@@ -23,7 +23,7 @@ namespace SODL.Cells
                 FindingCardEffect effect = game.EffectSystem.FindingCardEffect;
                 if (finding != null)
                 {
-                    player.Inventory.AddItem(finding.Item, finding.ItemCount);
+                    character.Inventory.AddItem(finding.Item, finding.ItemCount);
                     effect.Show(finding);
                 }
 

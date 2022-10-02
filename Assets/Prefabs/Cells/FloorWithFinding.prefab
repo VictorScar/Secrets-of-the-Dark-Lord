@@ -129,8 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coord: {x: 0, y: 0}
+  actionType: 1
   renderer: {fileID: 2463499406647355287}
   materials: []
-  item: {fileID: 0}
-  itemCount: 1
   emptyFindingMaterial: {fileID: 2100000, guid: fb5b2dfc09274b6439e28dadb7238e5f, type: 2}

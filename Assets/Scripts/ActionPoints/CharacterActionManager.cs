@@ -12,32 +12,37 @@ namespace SODL.ActionPoints
         //[SerializeField] TurnManager turnManager;
         [SerializeField] CharacterActionConfig characterActionConfig;
         GameCharacter turnOwner;
-        public int ActionPointCount { get ; private set; }
+        public int ActionPointCount { get; private set; }
 
         public event Action onCharacterFinished;
         public event Action onActionPointsChanged;
 
-        public bool CanDoAction(CharacterActionType action)
+        public bool DoAction(CharacterActionType action)
         {
             var actionInfo = characterActionConfig.GetInfo(action);
-            if (actionInfo !=null)
+
+            if (actionInfo != null && ValidateItem(actionInfo) && ValidatePoints(actionInfo))
             {
-                if (actionInfo.RequiredItem!=null)
-                {
-                    
-                }
+                ActionPointCount -= actionInfo.RequiredPoints;
+                return true;
             }
+
+            return false;
+        }
+
+        private bool ValidateItem(CharacterActionInfo info)
+        {
+            if (info.RequiredItem != null)
+            {
+                return turnOwner.Inventory.HasItem(info.RequiredItem);
+            }
+
             return true;
+        }
 
-            //Dictionary<CharacterActionType, int> actions = new Dictionary<CharacterActionType, int>();
-            //int requiredPoints = actions.GetValueOrDefault(action);
-
-            //if (ActionPointCount >= requiredPoints)
-            //{
-            //    ActionPointCount -= requiredPoints;
-            //    return true;
-            //}
-            //return false;
+        private bool ValidatePoints(CharacterActionInfo info)
+        {
+            return (ActionPointCount >= info.RequiredPoints);
         }
 
         public void StartNewTurn(GameCharacter turnOwner)

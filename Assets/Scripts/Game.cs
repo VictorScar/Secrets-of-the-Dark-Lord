@@ -1,3 +1,4 @@
+using SODL.ActionPoints;
 using SODL.Character;
 using SODL.Finding;
 using UnityEngine;
@@ -10,19 +11,12 @@ namespace SODL.Core
         [SerializeField] private PlayerCamera playerCamera;
         [SerializeField] private FindingsGenerator findingsGenerator;
         [SerializeField] private EffectSystem effectSystem;
+        [SerializeField] private CharacterActionManager actionManager;
 
         public static Game Instance { get; private set; }
-        public Player Player
-        {
-            get { return player; }
-            set { player = value; }
-        }
-
-        public FindingsGenerator FindingsGenerator
-        {
-            get { return findingsGenerator; }
-        }
-
+        public Player Player { get { return player; } set { player = value; } }
+        public FindingsGenerator FindingsGenerator { get { return findingsGenerator; } }
+        public CharacterActionManager ActionManager { get => actionManager; }
         public PlayerCamera PlayerCamera { get => playerCamera; set => playerCamera = value; }
         public EffectSystem EffectSystem { get => effectSystem; }
 

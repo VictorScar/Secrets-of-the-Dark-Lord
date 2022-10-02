@@ -8,7 +8,7 @@ using UnityEngine;
 namespace SODL.Character
 {
     [SelectionBase]
-    public class Player : MonoBehaviour
+    public class Player : GameCharacter
     {
         public Cell startingCell;
         Cell currentCell;

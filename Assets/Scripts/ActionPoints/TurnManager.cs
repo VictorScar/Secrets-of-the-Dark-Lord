@@ -17,6 +17,7 @@ namespace SODL.ActionPoints
         {
             actionManager = Game.Instance.ActionManager;
             RegisterCharacter(Game.Instance.Player);
+            actionManager.onCharacterFinished += GetNextTurn;
             actionManager.StartNewTurn(TurnOwner);
         }
 
@@ -29,6 +30,7 @@ namespace SODL.ActionPoints
         {
             var character = characterQueue.Dequeue();
             characterQueue.Enqueue(character);
+            actionManager.StartNewTurn(TurnOwner);
         }
     }
 }

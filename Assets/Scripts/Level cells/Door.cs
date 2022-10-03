@@ -37,6 +37,7 @@ namespace SODL.Cells
         {
             Opened = true;
             doorAnimator.Play("Open");
+            ActionType = ActionPoints.CharacterActionType.MoveToCell;
         }
         public void CloseDoor()
         {

@@ -17,7 +17,7 @@ namespace SODL.Cells
 
         public Map Map { get { return map; } }
 
-        public CharacterActionType ActionType { get => actionType; }
+        public CharacterActionType ActionType { get => actionType; protected set => actionType = value ; }
 
         public virtual void Init(Map map)
         {

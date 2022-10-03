@@ -9,7 +9,6 @@ namespace SODL.ActionPoints
 {
     public class CharacterActionManager : MonoBehaviour
     {
-        //[SerializeField] TurnManager turnManager;
         [SerializeField] CharacterActionConfig characterActionConfig;
         GameCharacter turnOwner;
         public int ActionPointCount { get; private set; }
@@ -24,6 +23,7 @@ namespace SODL.ActionPoints
             if (actionInfo != null && ValidateItem(actionInfo) && ValidatePoints(actionInfo))
             {
                 ActionPointCount -= actionInfo.RequiredPoints;
+                onActionPointsChanged?.Invoke();
                 return true;
             }
 
@@ -47,8 +47,14 @@ namespace SODL.ActionPoints
 
         public void StartNewTurn(GameCharacter turnOwner)
         {
-            ActionPointCount = Random.Range(0, 7);
+            ActionPointCount = Random.Range(1, 7);
             this.turnOwner = turnOwner;
+            onActionPointsChanged?.Invoke();
+        }
+
+        public void TurnOverCallback()
+        {
+            onCharacterFinished?.Invoke();
         }
     }
 }

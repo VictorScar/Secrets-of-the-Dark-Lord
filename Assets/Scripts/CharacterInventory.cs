@@ -1,3 +1,4 @@
+using SODL.ActionPoints;
 using SODL.Inventory;
 using SODL.Utills;
 using System;
@@ -13,9 +14,16 @@ namespace SODL.Core
         [SerializeField] List<InventorySlot> usedSlots = new List<InventorySlot>();
         [SerializeField, OneLine] InventorySlot[] inventorySlots = new InventorySlot[30];
         [SerializeField] Item item;
+        CharacterActionManager actionManager;
+        CharacterActionType actionType = CharacterActionType.WearItem;
         public event Action OnInventoryUpdated;
 
         public InventorySlot[] InventorySlots { get => inventorySlots; }
+
+        private void Start()
+        {
+            actionManager = Game.Instance.ActionManager;
+        }
 
         private void Update()
         {
@@ -33,7 +41,7 @@ namespace SODL.Core
         public void UseItem(InventorySlot inventorySlot)
         {
             //Проверка надеваемый ли предмет
-            if (inventorySlot.item.IsWearable)
+            if (inventorySlot.item.IsWearable && actionManager.DoAction(actionType))
             {
                 //Проходим по списку используемых предметов и получаем все предметы такого же или соответствующих типов
                 //и снимаем их

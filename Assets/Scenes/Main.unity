@@ -1109,12 +1109,12 @@ GameObject:
   - component: {fileID: 582596614}
   - component: {fileID: 582596613}
   m_Layer: 5
-  m_Name: GameMessange
+  m_Name: GameMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &582596612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582596611}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -4381,7 +4381,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPointsText: {fileID: 2121066921}
-  gameMessangeText: {fileID: 582596611}
+  gameMessageText: {fileID: 582596613}
+  turnOverButton: {fileID: 2092370410}
 --- !u!224 &1885183156 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3548412980567901317, guid: 5648f88d366c1ea4cac26bf649aa4cae, type: 3}

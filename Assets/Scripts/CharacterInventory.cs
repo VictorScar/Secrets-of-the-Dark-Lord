@@ -15,7 +15,6 @@ namespace SODL.Core
         [SerializeField, OneLine] InventorySlot[] inventorySlots = new InventorySlot[30];
         [SerializeField] Item item;
         CharacterActionManager actionManager;
-        CharacterActionType actionType = CharacterActionType.WearItem;
         public event Action OnInventoryUpdated;
 
         public InventorySlot[] InventorySlots { get => inventorySlots; }
@@ -41,7 +40,7 @@ namespace SODL.Core
         public void UseItem(InventorySlot inventorySlot)
         {
             //Проверка надеваемый ли предмет
-            if (inventorySlot.item.IsWearable && actionManager.DoAction(actionType))
+            if (inventorySlot.item.IsWearable && actionManager.DoAction(CharacterActionType.WearItem))
             {
                 //Проходим по списку используемых предметов и получаем все предметы такого же или соответствующих типов
                 //и снимаем их

@@ -52,7 +52,7 @@ namespace SODL.ActionPoints
             onActionPointsChanged?.Invoke();
         }
 
-        public void TurnOverCallback()
+        public void FinishTurn()
         {
             onCharacterFinished?.Invoke();
         }

@@ -20,7 +20,7 @@ namespace SODL.Cells
             }
         }
 
-        public override bool OnBeforePlayerMove(Player player)
+        public override bool OnBeforeCharacterMove(GameCharacter character)
         {
             return true;
         }

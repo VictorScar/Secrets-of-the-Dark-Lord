@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6504802dd224d2748a620522dd609772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coord: {x: 0, y: 0}
+  actionType: 1
   renderer: {fileID: 2463499406647355287}
   materials:
   - value: {fileID: 2100000, guid: 2f6dab2f4448b2047865d493910ff233, type: 2}

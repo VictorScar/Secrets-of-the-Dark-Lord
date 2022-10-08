@@ -37,6 +37,7 @@ namespace SODL.Cells
         {
             Opened = true;
             doorAnimator.Play("Open");
+            ActionType = ActionPoints.CharacterActionType.MoveToCell;
         }
         public void CloseDoor()
         {
@@ -44,7 +45,7 @@ namespace SODL.Cells
             doorAnimator.Play("Closed");
         }
 
-        public override bool OnBeforePlayerMove(Player player)
+        public override bool OnBeforeCharacterMove(GameCharacter character)
         {
             if (!Opened)
             {

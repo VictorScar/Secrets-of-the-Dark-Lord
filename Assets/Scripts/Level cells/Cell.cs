@@ -1,3 +1,4 @@
+using SODL.ActionPoints;
 using SODL.Character;
 using SODL.Core;
 using System;
@@ -12,20 +13,23 @@ namespace SODL.Cells
     {
         protected Map map;
         public Vector2Int coord;
+        [SerializeField] private CharacterActionType actionType;
 
         public Map Map { get { return map; } }
+
+        public CharacterActionType ActionType { get => actionType; protected set => actionType = value ; }
 
         public virtual void Init(Map map)
         {
             this.map = map;
         }
 
-        public virtual bool OnBeforePlayerMove(Player player)
+        public virtual bool OnBeforeCharacterMove(GameCharacter character)
         {
             return false;
         }
 
-        public virtual void OnPlayerMove(Player player)
+        public virtual void OnCharacterMove(GameCharacter character)
         {
 
         }

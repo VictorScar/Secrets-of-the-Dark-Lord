@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace SODL.Utills
+namespace SODL.Utils
 {
     public static class DescriptionBuilder
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Text;
 using SODL.Core;
-using SODL.Utills;
+using SODL.Utils;
 
 namespace SODL.Finding
 {

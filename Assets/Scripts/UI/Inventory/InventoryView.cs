@@ -7,7 +7,7 @@ using System;
 using System.Text;
 using SODL.Core;
 using SODL.Inventory;
-using SODL.Utills;
+using SODL.Utils;
 
 
 namespace SODL.UI.Inventory

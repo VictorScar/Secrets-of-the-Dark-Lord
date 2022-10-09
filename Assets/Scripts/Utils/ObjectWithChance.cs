@@ -1,4 +1,4 @@
-﻿namespace SODL.Utills
+﻿namespace SODL.Utils
 {
     [System.Serializable]
     public struct ObjectWithChance<T>

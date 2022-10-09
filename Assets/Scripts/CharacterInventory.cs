@@ -1,6 +1,6 @@
 using SODL.ActionPoints;
 using SODL.Inventory;
-using SODL.Utills;
+using SODL.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;

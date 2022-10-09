@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SODL.Utills
+namespace SODL.Utils
 {
     public static class Randomizer
     {

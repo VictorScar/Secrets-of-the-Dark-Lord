@@ -6,7 +6,7 @@ namespace SODL.ActionPoints
     [CreateAssetMenu(menuName = "ScriptableObjects/CharacterActionConfig")]
     public class CharacterActionConfig : ScriptableObject
     {
-        [SerializeField, Utills.OneLine] List<ActionPairInfo> actions = new List<ActionPairInfo>();
+        [SerializeField, Utils.OneLine] List<ActionPairInfo> actions = new List<ActionPairInfo>();
 
         public CharacterActionInfo GetInfo(CharacterActionType actionType)
         {

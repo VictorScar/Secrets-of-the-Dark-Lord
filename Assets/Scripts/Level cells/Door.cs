@@ -1,8 +1,5 @@
 using SODL.Character;
 using SODL.Core;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SODL.Cells
@@ -10,10 +7,10 @@ namespace SODL.Cells
     public class Door : Cell
     {
         public bool Opened { get; protected set; }
+        private bool haveEvent = true;
 
         [SerializeField] Animator doorAnimator;
-
-
+        
         public override void Init(Map map)
         {
             base.Init(map);
@@ -53,6 +50,15 @@ namespace SODL.Cells
                 return false;
             }
             return true;
+        }
+
+        public override void OnCharacterMove(GameCharacter character)
+        {
+            if (haveEvent)
+            {
+                Game.Instance.RoomEventManager.StartRandomEvent();
+                haveEvent = false;
+            }
         }
     }
 }

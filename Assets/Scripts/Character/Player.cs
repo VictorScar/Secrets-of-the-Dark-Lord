@@ -13,6 +13,7 @@ namespace SODL.Character
         void Awake()
         {
             Game.Instance.Player = this;
+            Health = 3;
         }
     }
 }

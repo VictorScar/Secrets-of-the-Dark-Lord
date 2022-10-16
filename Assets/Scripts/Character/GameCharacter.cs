@@ -15,6 +15,7 @@ namespace SODL.Character
         public bool IsMoving { get; private set; }
         [SerializeField] CharacterInventory inventory;
         public CharacterInventory Inventory { get => inventory; }
+        public int Health { get; set; } = 1;
         [SerializeField] protected float speed = 0.5f;
         [SerializeField] protected Animator animator;
         CharacterActionManager actionManager;

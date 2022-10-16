@@ -1,6 +1,7 @@
 using SODL.ActionPoints;
 using SODL.Character;
 using SODL.Finding;
+using SODL.RoomEvents;
 using UnityEngine;
 
 namespace SODL.Core
@@ -12,13 +13,19 @@ namespace SODL.Core
         [SerializeField] private FindingsGenerator findingsGenerator;
         [SerializeField] private EffectSystem effectSystem;
         [SerializeField] private CharacterActionManager actionManager;
+        [SerializeField] private RoomEventManager roomEventManager;
+        [SerializeField] private QuestionUI questionUI;
+        [SerializeField] private TurnManager turnManager;
 
         public static Game Instance { get; private set; }
         public Player Player { get { return player; } set { player = value; } }
         public FindingsGenerator FindingsGenerator { get { return findingsGenerator; } }
         public CharacterActionManager ActionManager { get => actionManager; }
+        public RoomEventManager RoomEventManager { get => roomEventManager; }
         public PlayerCamera PlayerCamera { get => playerCamera; set => playerCamera = value; }
         public EffectSystem EffectSystem { get => effectSystem; }
+        public QuestionUI QuestionUI { get => questionUI; }
+        public TurnManager TurnManager { get => turnManager; }
 
         private void Awake()
         {

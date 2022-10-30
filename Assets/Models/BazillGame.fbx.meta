@@ -1,0 +1,567 @@
+fileFormatVersion: 2
+guid: 1043c523b3ed6e54db24e2bb04f84894
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Death_Bazill
+  - first:
+      74: -5405653242291790180
+    second: Take 001 (1)
+  - first:
+      74: 4854180139978558704
+    second: Take 001 (2)
+  - first:
+      74: 1389121407789637250
+    second: Damage_Bazill
+  - first:
+      74: -5017556500219525588
+    second: Idle_Bazill
+  - first:
+      74: -2177114773723383094
+    second: Walk_Bazill
+  - first:
+      74: -2094615419917430001
+    second: Attack_Bazill
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle_Bazill
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 2
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk_Bazill
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 21
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack_Bazill
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 41
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Damage_Bazill
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 70
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death_Bazill
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 81
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 1
+    maxBonesPerVertex: 47
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: BazillGame(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bazil_LP
+      parentName: BazillGame(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eyes
+      parentName: BazillGame(Clone)
+      position: {x: 0.019159658, y: 0.3892221, z: 0.06554037}
+      rotation: {x: 0.00024391695, y: 0.019998733, z: 0.0004241306, w: 0.9997999}
+      scale: {x: 22.315758, y: 17.513168, z: 15.293203}
+    - name: Boolaw
+      parentName: BazillGame(Clone)
+      position: {x: -0.4728495, y: 0.08882632, z: 0.28132793}
+      rotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+      scale: {x: 65.85202, y: 65.85202, z: 65.85202}
+    - name: Main_root
+      parentName: BazillGame(Clone)
+      position: {x: -2.6797482e-18, y: 0.28695026, z: 0.011191994}
+      rotation: {x: 0.05030119, y: 0.9976318, z: -0.0023622778, w: -0.046851546}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftHand_root
+      parentName: Main_root
+      position: {x: 0.15545255, y: -0.0042485804, z: 0.003976045}
+      rotation: {x: 0.23607561, y: -0.21483804, z: -0.655189, w: 0.68471915}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_predpl
+      parentName: LeftHand_root
+      position: {x: 0.0924175, y: 0.0015438236, z: 0.0018705066}
+      rotation: {x: -0.0064542238, y: -0.04602172, z: 0.09407915, w: 0.99447954}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_kist
+      parentName: Left_predpl
+      position: {x: 0.1631391, y: -0.020194422, z: -0.005593239}
+      rotation: {x: -0.06321058, y: -0.5452537, z: 0.026531551, w: 0.83546335}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LFinger1
+      parentName: Left_kist
+      position: {x: 0.03353259, y: 0.012947999, z: 0.020625373}
+      rotation: {x: -0.39584273, y: 0.456319, z: 0.7276302, w: -0.32501656}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint35
+      parentName: LFinger1
+      position: {x: -0.049783498, y: -2.6645353e-18, z: 1.4210855e-17}
+      rotation: {x: 0.28342137, y: -0.5654558, z: 0.6358299, w: 0.44232607}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint36
+      parentName: joint35
+      position: {x: -0.028020687, y: -8.881785e-19, z: -4.618528e-17}
+      rotation: {x: -0.05180567, y: -0.255245, z: -0.19204405, w: 0.9461952}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LFinger2
+      parentName: Left_kist
+      position: {x: 0.05744076, y: 0.0035473024, z: -0.0067396564}
+      rotation: {x: -0.024796173, y: 0.21258536, z: -0.81042373, w: 0.54534954}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint23
+      parentName: LFinger2
+      position: {x: -0.044109352, y: -3.330669e-19, z: 1.776357e-18}
+      rotation: {x: -0.17492828, y: -0.025905684, z: 0.7076231, w: 0.68410426}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint24
+      parentName: joint23
+      position: {x: -0.037714988, y: 7.327472e-18, z: -1.9539927e-17}
+      rotation: {x: -0.013535038, y: -0.07688968, z: -0.1728372, w: 0.9818514}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LFinger3
+      parentName: Left_kist
+      position: {x: 0.05172113, y: -0.00025569694, z: -0.028311666}
+      rotation: {x: -0.13335629, y: 0.1685176, z: -0.7600701, w: 0.6132792}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint26
+      parentName: LFinger3
+      position: {x: -0.04242597, y: -1.3822277e-17, z: 2.6645353e-18}
+      rotation: {x: -0.0505707, y: 0.02038297, z: 0.669824, w: 0.74051535}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint27
+      parentName: joint26
+      position: {x: -0.04858863, y: 1.7885694e-16, z: -3.5704773e-16}
+      rotation: {x: -0.007429516, y: -0.047469635, z: -0.15444992, w: 0.98683167}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LFinger4
+      parentName: Left_kist
+      position: {x: 0.032296896, y: -0.0041934536, z: -0.051528472}
+      rotation: {x: -0.1512943, y: 0.1571362, z: -0.78906363, w: 0.5742794}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint29
+      parentName: LFinger4
+      position: {x: -0.036588907, y: -2.88658e-18, z: 8.881785e-19}
+      rotation: {x: -0.013373189, y: -0.031593524, z: 0.68402296, w: 0.7286533}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint30
+      parentName: joint29
+      position: {x: -0.04257726, y: -1.7061006e-18, z: -7.105428e-18}
+      rotation: {x: 0.0016033712, y: 0.013338345, z: -0.1193377, w: 0.99276286}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LFinger5
+      parentName: Left_kist
+      position: {x: 0.012951964, y: -0.009080719, z: -0.06174584}
+      rotation: {x: 0.44367164, y: 0.19910985, z: 0.14493844, w: 0.8616865}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint32
+      parentName: LFinger5
+      position: {x: -0.035756543, y: -4.468648e-18, z: 8.881785e-19}
+      rotation: {x: 0.10390825, y: 0.013832639, z: 0.6596164, w: 0.7442567}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint33
+      parentName: joint32
+      position: {x: -0.035837185, y: -5.5511154e-20, z: 1.4654944e-17}
+      rotation: {x: 0.0045713168, y: 0.04535331, z: -0.100181095, w: 0.99392456}
+      scale: {x: 1, y: 1, z: 1}
+    - name: BoolSkelet
+      parentName: Left_kist
+      position: {x: 0.18761636, y: 0.029594293, z: 0.19984907}
+      rotation: {x: 0.22781333, y: 0.19576053, z: 0.7167858, w: 0.62928295}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint59
+      parentName: BoolSkelet
+      position: {x: -0.0032511523, y: -0.00018168375, z: -0.37573236}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightHand_root
+      parentName: Main_root
+      position: {x: -0.15118547, y: 0.026751792, z: -0.025035873}
+      rotation: {x: 0.63764554, y: 0.47896218, z: -0.36282194, w: -0.48204118}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_predpl
+      parentName: RightHand_root
+      position: {x: -0.092416726, y: -0.001543962, z: -0.0018705534}
+      rotation: {x: -0.0064542238, y: -0.04602172, z: 0.09407915, w: 0.99447954}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_Kist
+      parentName: Right_predpl
+      position: {x: -0.16313942, y: 0.020194177, z: 0.0055932766}
+      rotation: {x: -0.020702234, y: -0.5294177, z: 0.040199433, w: 0.8471555}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RFinger1
+      parentName: Right_Kist
+      position: {x: -0.03353245, y: -0.012947697, z: -0.020625466}
+      rotation: {x: -0.1113559, y: 0.054834027, z: 0.9918112, w: 0.030060722}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint41
+      parentName: RFinger1
+      position: {x: 0.049783997, y: 0.00000015300913, z: 0.00000039921164}
+      rotation: {x: -0.023924604, y: -0.08880795, z: 0.13632746, w: 0.9863851}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint42
+      parentName: joint41
+      position: {x: 0.028020177, y: 0.000000016426123, z: -0.00000064214726}
+      rotation: {x: -0.05180567, y: -0.255245, z: -0.19204405, w: 0.9461952}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RFinger2
+      parentName: Right_Kist
+      position: {x: -0.05744063, y: -0.0035469327, z: 0.0067395484}
+      rotation: {x: 0.0644894, y: 0.02463135, z: 0.99760413, w: 0.00452793}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint44
+      parentName: RFinger2
+      position: {x: 0.044109713, y: 0.0000005056025, z: 0.0000001343638}
+      rotation: {x: -0.026507253, y: -0.095985666, z: 0.0785758, w: 0.9919224}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint45
+      parentName: joint44
+      position: {x: 0.037715092, y: -0.0000004614328, z: 0.000000009940545}
+      rotation: {x: -0.013535038, y: -0.07688968, z: -0.1728372, w: 0.9818514}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RFinger3
+      parentName: Right_Kist
+      position: {x: -0.051721293, y: 0.00025579706, z: 0.028311705}
+      rotation: {x: 0.19250153, y: -0.012398203, z: 0.98002005, w: -0.048478693}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint47
+      parentName: RFinger3
+      position: {x: 0.042425632, y: -0.00000011467511, z: 0.00000000699551}
+      rotation: {x: 0.000709236, y: 0.002219168, z: 0.0011668504, w: 0.99999666}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint48
+      parentName: joint47
+      position: {x: 0.04858911, y: -0.00000009736265, z: 0.00000006062904}
+      rotation: {x: -0.007429516, y: -0.047469635, z: -0.15444992, w: 0.98683167}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RFinger4
+      parentName: Right_Kist
+      position: {x: -0.03229726, y: 0.004194079, z: 0.051528685}
+      rotation: {x: 0.20297644, y: -0.0044962983, z: 0.979169, w: 0.00290252}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint50
+      parentName: RFinger4
+      position: {x: 0.03658792, y: -0.0000000016195301, z: -0.000000075258995}
+      rotation: {x: -0.010695114, y: -0.04744232, z: 0.017518075, w: 0.9986631}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint51
+      parentName: joint50
+      position: {x: 0.042577997, y: 0.0000004174895, z: -0.0000000131142635}
+      rotation: {x: 0.0016033712, y: 0.013338345, z: -0.1193377, w: 0.99276286}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RFinger5
+      parentName: Right_Kist
+      position: {x: -0.012952182, y: 0.00908137, z: 0.061745953}
+      rotation: {x: 0.6469599, y: -0.40737212, z: -0.26548582, w: -0.587374}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint53
+      parentName: RFinger5
+      position: {x: 0.035755947, y: 0.00000092219375, z: 0.00000016785799}
+      rotation: {x: 0.009010939, y: 0.042992145, z: -0.005690353, w: 0.9990186}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint54
+      parentName: joint53
+      position: {x: 0.035837628, y: -0.0000007549441, z: -0.00000004942206}
+      rotation: {x: 0.0045713168, y: 0.04535331, z: -0.100181095, w: 0.99392456}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body
+      parentName: Main_root
+      position: {x: -4.3585292e-18, y: -2.899227e-17, z: 1.373928e-18}
+      rotation: {x: 0.9905495, y: -0.10014268, z: 0.09371879, w: -0.000000059256628}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Body
+      position: {x: 0.0054401523, y: 0.07041574, z: 0.013179325}
+      rotation: {x: -0.17743005, y: 0.21674809, z: -0.6748763, w: 0.6827012}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint21
+      parentName: Head
+      position: {x: -0.13243283, y: 0.015182277, z: 5.350011e-18}
+      rotation: {x: 0.1756784, y: -0.21815969, z: 0.67424285, w: 0.6833301}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Opora
+      parentName: Body
+      position: {x: -0.020929147, y: -0.20422511, z: 0.0029845424}
+      rotation: {x: 0.050301075, y: 0.9976318, z: -0.0023622746, w: 0.04685149}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Legs
+      parentName: Opora
+      position: {x: -0.00200986, y: -0.062628515, z: 0.0018485853}
+      rotation: {x: 0.27318552, y: 0.9059181, z: -0.25509965, w: 0.19901317}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightLeg_root
+      parentName: Legs
+      position: {x: -0.08686913, y: 0.027504768, z: 0.04267694}
+      rotation: {x: -0.8009653, y: 0.11205937, z: -0.09162895, w: 0.58094877}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightKnee
+      parentName: RightLeg_root
+      position: {x: -0.12812966, y: -0.033350892, z: 0.0014037441}
+      rotation: {x: 0.91937375, y: 0.2946536, z: -0.082833536, w: -0.24712303}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Right_foot
+      parentName: RightKnee
+      position: {x: -0.17147642, y: -0.06452199, z: -0.0031719054}
+      rotation: {x: 0.97837305, y: 0.18859117, z: 0.031372014, w: -0.078964114}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint18
+      parentName: Right_foot
+      position: {x: -0.110498674, y: 7.815971e-17, z: 2.309264e-17}
+      rotation: {x: 0.092031024, y: 0.6700832, z: -0.026313819, w: 0.73608863}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftLeg_root
+      parentName: Legs
+      position: {x: 0.057851944, y: -0.08231872, z: 0.0009275003}
+      rotation: {x: -0.52555937, y: 0.0980531, z: 0.52070326, w: -0.6656134}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftKnee
+      parentName: LeftLeg_root
+      position: {x: 0.12812966, y: 0.033350892, z: -0.0014037441}
+      rotation: {x: 0.9191512, y: 0.29520473, z: -0.08325749, w: -0.24715069}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Left_Foot
+      parentName: LeftKnee
+      position: {x: 0.17147642, y: 0.06452199, z: 0.0031719054}
+      rotation: {x: 0.9784086, y: 0.18841393, z: 0.03135947, w: -0.078951836}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint19
+      parentName: Left_Foot
+      position: {x: 0.110498674, y: 8.526513e-16, z: -2.458478e-15}
+      rotation: {x: 0.092031024, y: 0.6700832, z: -0.026313819, w: 0.73608863}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Back
+      parentName: Legs
+      position: {x: -0.019612746, y: -0.072124, z: 0.13071285}
+      rotation: {x: -0.19591023, y: -0.1333438, z: -0.25078887, w: 0.93858594}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint56
+      parentName: Back
+      position: {x: -0.012858992, y: -0.12799433, z: -0.0183472}
+      rotation: {x: 3.9968348e-17, y: 0.9536502, z: -3.9968348e-17, w: -0.3009175}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint57
+      parentName: joint56
+      position: {x: 1.807525e-16, y: -0.08297454, z: 0.010264639}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.1
+    rootMotionBoneName: Main_root
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

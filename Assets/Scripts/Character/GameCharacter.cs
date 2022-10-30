@@ -11,11 +11,15 @@ namespace SODL.Character
     public class GameCharacter : MonoBehaviour
     {
         public Cell startingCell;
-        protected Cell currentCell;
+        private Cell currentCell;
         public bool IsMoving { get; private set; }
         [SerializeField] CharacterInventory inventory;
         public CharacterInventory Inventory { get => inventory; }
         public int Health { get; set; } = 1;
+        public float Attack { get; set; } = 1;
+        public float Deffenence { get; set; } = 1;
+        public Cell CurrentCell { get => currentCell; }
+
         [SerializeField] protected float speed = 0.5f;
         [SerializeField] protected Animator animator;
         CharacterActionManager actionManager;

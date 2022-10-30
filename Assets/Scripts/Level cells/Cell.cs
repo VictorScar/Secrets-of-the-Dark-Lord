@@ -14,10 +14,12 @@ namespace SODL.Cells
         protected Map map;
         public Vector2Int coord;
         [SerializeField] private CharacterActionType actionType;
+        List <GameCharacter> charactersOnCell;
 
         public Map Map { get { return map; } }
 
-        public CharacterActionType ActionType { get => actionType; protected set => actionType = value ; }
+        public CharacterActionType ActionType { get => actionType; protected set => actionType = value; }
+        public List<GameCharacter> CharactersOnCell { get => charactersOnCell; }
 
         public virtual void Init(Map map)
         {
@@ -57,5 +59,14 @@ namespace SODL.Cells
             return map.GetRightCell(this);
         }
 
+        public void AddCharactrOnCell(GameCharacter character)
+        {
+            charactersOnCell.Add (character);
+        }
+
+        public void RemoveCharactrOnCell(GameCharacter character)
+        {
+            charactersOnCell.Remove(character);
+        }
     }
 }

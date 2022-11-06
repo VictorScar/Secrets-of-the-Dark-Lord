@@ -1,6 +1,7 @@
 using SODL.ActionPoints;
 using SODL.Character;
 using SODL.Core;
+using SODL.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace SODL.Cells
         protected Map map;
         public Vector2Int coord;
         [SerializeField] private CharacterActionType actionType;
-        List <GameCharacter> charactersOnCell;
+        List<GameCharacter> charactersOnCell;
 
         public Map Map { get { return map; } }
 
@@ -49,7 +50,6 @@ namespace SODL.Cells
 
         public Cell GetLeftCell()
         {
-
             return map.GetLeftCell(this);
         }
 
@@ -59,9 +59,22 @@ namespace SODL.Cells
             return map.GetRightCell(this);
         }
 
+        public Cell GetCellByDirection(Direction direction)
+        {
+            return direction switch
+            {
+                Direction.None => this,
+                Direction.Up => GetUpperCell(),
+                Direction.Down => GetBottomCell(),
+                Direction.Left => GetLeftCell(),
+                Direction.Right => GetRightCell(),
+                _ => throw new NotImplementedException(),
+            };
+        }
+
         public void AddCharactrOnCell(GameCharacter character)
         {
-            charactersOnCell.Add (character);
+            charactersOnCell.Add(character);
         }
 
         public void RemoveCharactrOnCell(GameCharacter character)

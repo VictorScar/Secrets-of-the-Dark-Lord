@@ -17,22 +17,35 @@ namespace SODL.Character
         public CharacterInventory Inventory { get => inventory; }
         public int Health { get; set; } = 1;
         public float Attack { get; set; } = 1;
-        public float Deffenence { get; set; } = 1;
+        public float Defenence { get; set; } = 1;
         public Cell CurrentCell { get => currentCell; }
+        public MoveDirection LastMoveDirection { get; private set; } = MoveDirection.None;
+
 
         [SerializeField] protected float speed = 0.5f;
         [SerializeField] protected Animator animator;
+        bool isReady { get; set; } = false;
         CharacterActionManager actionManager;
 
-        private void Start()
+        protected virtual void Awake()
+        {
+
+        }
+
+        protected virtual void Start()
         {
             currentCell = startingCell;
             actionManager = Game.Instance.ActionManager;
+            Game.Instance.TurnManager.RegisterCharacter(this);
+            actionManager.onActionPointsOut += ActionsEnded;
         }
 
         public void Move(MoveDirection direction)
         {
-            StartCoroutine(MoveCoroutine(direction));
+            if (isReady == true)
+            {
+                StartCoroutine(MoveCoroutine(direction));
+            }
         }
 
         IEnumerator MoveCoroutine(MoveDirection direction)
@@ -45,36 +58,67 @@ namespace SODL.Character
             {
                 case MoveDirection.Up:
                     nextCell = currentCell.GetUpperCell();
-                    gameObject.transform.rotation = Quaternion.identity;
                     break;
                 case MoveDirection.Down:
                     nextCell = currentCell.GetBottomCell();
-                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
                     break;
                 case MoveDirection.Left:
                     nextCell = currentCell.GetLeftCell();
-                    gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
                     break;
                 case MoveDirection.Right:
                     nextCell = currentCell.GetRightCell();
-                    gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
                     break;
             }
-                      
-            if (nextCell != null && actionManager.DoAction(nextCell.ActionType) && nextCell.OnBeforeCharacterMove(this))
+
+            //Проверка условий возможности перехода на ячейку в заданном направлении.
+            //Существует ли данная ячейка?
+            //Достаточно ли очков действия для перехода на нее?
+
+            if (nextCell != null && actionManager.DoAction(nextCell.ActionType))
             {
-                yield return PlayMoveAnimation(nextCell);
-                nextCell.OnCharacterMove(this);
+                RotateTo(direction);
+
+                //Можно ли на нее встать персонажем?
+                if (nextCell.OnBeforeCharacterMove(this))
+                {
+                    //анимация перемещения персонажа
+                    yield return PlayMoveAnimation(nextCell);
+
+                    //сохранение информации о положении и последнем перемещении персонажа
+                    currentCell = nextCell;
+                    LastMoveDirection = direction;
+
+                    //Уведомление ячейки, что игрок находится на ней
+                    nextCell.OnCharacterMove(this);
+                }
             }
 
             IsMoving = false;
             animator.Play("Idle");
+
         }
 
         private void TeleportToCell(Cell nextCell)
         {
             transform.position = nextCell.transform.position;
             currentCell = nextCell;
+        }
+
+        void ActionsEnded()
+        {
+            isReady = false;
+        }
+
+        public void RotateTo(MoveDirection direction)
+        {
+            transform.rotation = (direction) switch
+            {
+                MoveDirection.Up => Quaternion.identity,
+                MoveDirection.Down => Quaternion.Euler(0, 180, 0),
+                MoveDirection.Left => Quaternion.Euler(0, -90, 0),
+                MoveDirection.Right => Quaternion.Euler(0, 90, 0),
+                _ => transform.rotation
+            };
         }
 
         IEnumerator PlayMoveAnimation(Cell nextCell)
@@ -85,9 +129,7 @@ namespace SODL.Character
             {
                 transform.position = Vector3.MoveTowards(transform.position, nextCell.transform.position, speed * Time.deltaTime);
                 yield return null;
-
             }
-            currentCell = nextCell;
         }
     }
 }

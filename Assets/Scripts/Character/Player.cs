@@ -9,9 +9,9 @@ namespace SODL.Character
 {
     public class Player : GameCharacter
     {
-
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             Game.Instance.Player = this;
             Health = 3;
         }

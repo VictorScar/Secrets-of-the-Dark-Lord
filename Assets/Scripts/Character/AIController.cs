@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,31 +8,41 @@ namespace SODL.Character
     public class AIController : MonoBehaviour
     {
         [SerializeField] GameCharacter character;
-        Vector3 characterDirection;
+        MoveDirection characterDirection;
 
         private void Start()
         {
-            characterDirection = character.transform.forward;
+            characterDirection = MoveDirection.Right;  //.Random.Range(1, 4);//MoveDirection.Down;
+            //TODO: var values = Enum.GetValues(typeof(MoveDirection));
+        }
+
+        private void Update()
+        {
+            //character.transform.rotation.SetLookRotation(Vector3.right);
+            //character.Move(characterDirection);
         }
 
         void DetermineDirection()
         {
-            if (characterDirection == Vector3.forward)
+            if (characterDirection == MoveDirection.Up)
             {
                 character.Move(MoveDirection.Up);
             }
-            else if (characterDirection == -Vector3.forward)
+            else if (characterDirection == MoveDirection.Down)
             {
                 character.Move(MoveDirection.Down);
             }
-            else if (characterDirection == Vector3.right)
+            else if (characterDirection == MoveDirection.Right)
             {
                 character.Move(MoveDirection.Right);
             }
-            else if (characterDirection == Vector3.left)
+            else if (characterDirection == MoveDirection.Left)
             {
                 character.Move(MoveDirection.Left);
             }
+            else Debug.LogError($"Направление: {characterDirection} не обрабатывается. Поворот должен быть кратным 90 градусов");
+            //Первоочередно - направление, а не поворот объекта.
+            //Необходимо задавать направление и поворачивать объект по нему, а не наоборот
         }
 
         void RotateCharacter()

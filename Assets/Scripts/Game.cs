@@ -16,6 +16,7 @@ namespace SODL.Core
         [SerializeField] private RoomEventManager roomEventManager;
         [SerializeField] private QuestionUI questionUI;
         [SerializeField] private TurnManager turnManager;
+        [SerializeField] private NpcSpawner npcSpawner;
 
         public static Game Instance { get; private set; }
         public Player Player { get { return player; } set { player = value; } }
@@ -26,6 +27,7 @@ namespace SODL.Core
         public EffectSystem EffectSystem { get => effectSystem; }
         public QuestionUI QuestionUI { get => questionUI; }
         public TurnManager TurnManager { get => turnManager; }
+        public NpcSpawner NpcSpawner { get => npcSpawner; }
 
         private void Awake()
         {

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using SODL.Core;
+using SODL.Utils;
 
 namespace SODL.RoomEvents
 {
@@ -8,20 +9,11 @@ namespace SODL.RoomEvents
     {
         [SerializeField] string description;
         [SerializeField] Answer[] answers;
-        QuestionUI questionUI = null;
-
-        QuestionUI QuestionUI
-        {
-            get
-            {
-                if (questionUI == null) questionUI = Game.Instance.QuestionUI;
-                return questionUI;
-            }
-        }
+        Cached<QuestionUI> questionUICached = new Cached<QuestionUI>(() => Game.Instance.QuestionUI);
 
         public virtual void Run()
         {
-            QuestionUI.InitEventPanel(description, answers);
+            questionUICached.Value.InitEventPanel(description, answers);
         }
     }
 }

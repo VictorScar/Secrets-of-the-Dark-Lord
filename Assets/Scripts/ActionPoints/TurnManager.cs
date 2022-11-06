@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using SODL.Character;
 using SODL.Core;
 using System.Collections;
@@ -11,12 +12,13 @@ namespace SODL.ActionPoints
         CharacterActionManager actionManager;
 
         Queue<GameCharacter> characterQueue = new Queue<GameCharacter>();
+        [SerializeField] GameCharacter[] characters;
         public GameCharacter TurnOwner { get => characterQueue.Peek(); }
+
 
         private void Start()
         {
             actionManager = Game.Instance.ActionManager;
-            RegisterCharacter(Game.Instance.Player);
             actionManager.onCharacterFinished += GetNextTurn;
             actionManager.StartNewTurn(TurnOwner);
         }
@@ -24,6 +26,7 @@ namespace SODL.ActionPoints
         public void RegisterCharacter(GameCharacter character)
         {
             characterQueue.Enqueue(character);
+            Debug.Log(character);
         }
 
         private void GetNextTurn()
@@ -31,6 +34,11 @@ namespace SODL.ActionPoints
             var character = characterQueue.Dequeue();
             characterQueue.Enqueue(character);
             actionManager.StartNewTurn(TurnOwner);
+        }
+
+        private void Update()
+        {
+            characters = characterQueue.ToArray();
         }
     }
 }

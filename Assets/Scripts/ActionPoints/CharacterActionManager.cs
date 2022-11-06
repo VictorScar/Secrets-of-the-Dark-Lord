@@ -15,7 +15,7 @@ namespace SODL.ActionPoints
 
         public event Action onCharacterFinished;
         public event Action onActionPointsChanged;
-
+       
         public bool DoAction(CharacterActionType action)
         {
             var actionInfo = characterActionConfig.GetInfo(action);

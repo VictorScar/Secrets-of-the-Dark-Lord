@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingCell: {fileID: 0}
-  inventory: {fileID: 0}
+  inventory: {fileID: 3446829636004322875}
   speed: 0.5
   animator: {fileID: 7468649682630439571}
+  controller: {fileID: 1679415314562174270}
 --- !u!114 &1679415314562174270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +64,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66e30d561bca9745a3cc09ea00dd2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 8236935174017426583}
+  npcCharacter: {fileID: 8236935174017426583}
+  actionManager: {fileID: 0}
 --- !u!114 &3446829636004322875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +225,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1043c523b3ed6e54db24e2bb04f84894, type: 3}
       propertyPath: m_Name
       value: BazillGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 1043c523b3ed6e54db24e2bb04f84894, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c7ef0f1c7e48bf94688cae12e3f8f71b, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 1043c523b3ed6e54db24e2bb04f84894, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 1043c523b3ed6e54db24e2bb04f84894, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1043c523b3ed6e54db24e2bb04f84894, type: 3}

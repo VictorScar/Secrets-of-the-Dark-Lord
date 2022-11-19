@@ -23,11 +23,11 @@ MonoBehaviour:
       \u043A \u0432\u0430\u043C \u0438 \u044F\u0440\u043E\u0441\u0442\u043D\u043E
       \u0430\u0442\u0430\u043A\u0443\u0435\u0442"
     gameAction:
-      rid: 381064870794625027
+      rid: 7935673640426143744
   references:
     version: 2
     RefIds:
-    - rid: 381064870794625027
-      type: {class: DealDamageAction, ns: SODL.RoomEvents, asm: Assembly-CSharp}
+    - rid: 7935673640426143744
+      type: {class: NPCSpawnAction, ns: SODL.RoomEvents, asm: Assembly-CSharp}
       data:
-        damage: 1
+        characterPrefab: {fileID: 8236935174017426583, guid: 28d0cdceccec6b24d9ecb0c8069b77c8, type: 3}

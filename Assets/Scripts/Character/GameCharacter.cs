@@ -1,6 +1,7 @@
 using SODL.ActionPoints;
 using SODL.Cells;
 using SODL.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,17 +20,18 @@ namespace SODL.Character
         public float Attack { get; set; } = 1;
         public float Defenence { get; set; } = 1;
         public Cell CurrentCell { get => currentCell; }
-        public MoveDirection LastMoveDirection { get; private set; } = MoveDirection.None;
-
+        public MoveDirection LastMoveDirection { get; private set; }
+        public MoveDirection CharacterDirection { get; private set; }
+        
 
         [SerializeField] protected float speed = 0.5f;
         [SerializeField] protected Animator animator;
-        bool isReady { get; set; } = false;
+        bool isReady = false; //TODO: fix
         CharacterActionManager actionManager;
 
         protected virtual void Awake()
         {
-
+            RotateTo(MoveDirection.Up);
         }
 
         protected virtual void Start()
@@ -37,7 +39,7 @@ namespace SODL.Character
             currentCell = startingCell;
             actionManager = Game.Instance.ActionManager;
             Game.Instance.TurnManager.RegisterCharacter(this);
-            actionManager.onActionPointsOut += ActionsEnded;
+            Debug.Log("Start");
         }
 
         public void Move(MoveDirection direction)
@@ -51,7 +53,7 @@ namespace SODL.Character
         IEnumerator MoveCoroutine(MoveDirection direction)
         {
             IsMoving = true;
-            animator.Play("Run");
+            //animator.Play("Run");
 
             Cell nextCell = null;
             switch (direction)
@@ -70,11 +72,14 @@ namespace SODL.Character
                     break;
             }
 
+            
             //Проверка условий возможности перехода на ячейку в заданном направлении.
             //Существует ли данная ячейка?
             //Достаточно ли очков действия для перехода на нее?
 
             if (nextCell != null && actionManager.DoAction(nextCell.ActionType))
+
+
             {
                 RotateTo(direction);
 
@@ -90,11 +95,15 @@ namespace SODL.Character
 
                     //Уведомление ячейки, что игрок находится на ней
                     nextCell.OnCharacterMove(this);
+                    if (actionManager.ActionPointCount == 0)
+                    {
+                        CanDoActions(false);
+                    }
                 }
             }
 
             IsMoving = false;
-            animator.Play("Idle");
+            //animator.Play("Idle");
 
         }
 
@@ -104,13 +113,9 @@ namespace SODL.Character
             currentCell = nextCell;
         }
 
-        void ActionsEnded()
-        {
-            isReady = false;
-        }
-
         public void RotateTo(MoveDirection direction)
         {
+            CharacterDirection = direction;
             transform.rotation = (direction) switch
             {
                 MoveDirection.Up => Quaternion.identity,
@@ -119,6 +124,11 @@ namespace SODL.Character
                 MoveDirection.Right => Quaternion.Euler(0, 90, 0),
                 _ => transform.rotation
             };
+        }
+
+        public void CanDoActions(bool canDo)
+        {
+            isReady = canDo;
         }
 
         IEnumerator PlayMoveAnimation(Cell nextCell)

@@ -10,7 +10,7 @@ namespace SODL.Cells
         private bool haveEvent = true;
 
         [SerializeField] Animator doorAnimator;
-        
+
         public override void Init(Map map)
         {
             base.Init(map);
@@ -27,7 +27,6 @@ namespace SODL.Cells
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
             }
-
         }
 
         public void OpenDoor()

@@ -5,7 +5,7 @@ namespace SODL.Utils
 {
     public static class Extensions
     {
-        public static Direction ToDirection(this MoveDirection moveDirection)
+        public static Direction ToDirectionType(this MoveDirection moveDirection)
         {
             return moveDirection switch
             {
@@ -29,6 +29,26 @@ namespace SODL.Utils
                 MoveDirection.None => MoveDirection.None,
                 _ => throw new ArgumentException()
             };
+        }
+
+        public static MoveDirection GetRotatedLeft(this MoveDirection direction)
+        {
+            switch (direction)
+            {
+                case MoveDirection.Up:
+                    direction = MoveDirection.Left;
+                    break;
+                case MoveDirection.Down:
+                    direction = MoveDirection.Right;
+                    break;
+                case MoveDirection.Left:
+                    direction = MoveDirection.Down;
+                    break;
+                case MoveDirection.Right:
+                    direction = MoveDirection.Up;
+                    break;
+            }
+            return direction;
         }
     }
 }

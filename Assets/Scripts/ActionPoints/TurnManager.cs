@@ -34,6 +34,11 @@ namespace SODL.ActionPoints
             var character = characterQueue.Dequeue();
             characterQueue.Enqueue(character);
             actionManager.StartNewTurn(TurnOwner);
+
+            if (TurnOwner is NPCCharacter npcCharacter)
+            {
+                npcCharacter.InitTurn();
+            }
         }
 
         private void Update()

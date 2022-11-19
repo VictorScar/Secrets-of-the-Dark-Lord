@@ -17,12 +17,13 @@ namespace SODL.Core
             Player player = turnManagerCached.Value.TurnOwner as Player;
             MoveDirection playerDirection = player.LastMoveDirection;
             //Получаем ячейку для спавна НПС по последнему направлению движения игрока
-            Cell startingCell = player.CurrentCell.GetCellByDirection(playerDirection.ToDirection());
+            Cell startingCell = player.CurrentCell.GetCellByDirection(playerDirection.ToDirectionType());
 
 
             if (characterPrefab != null)
             {
                 GameCharacter npcCharacter = Instantiate(characterPrefab, startingCell.transform.position, Quaternion.identity);
+                Debug.Log("Instantiate");
                 npcCharacter.startingCell = startingCell;
                 npcCharacter.RotateTo(playerDirection.Inverse());
             }

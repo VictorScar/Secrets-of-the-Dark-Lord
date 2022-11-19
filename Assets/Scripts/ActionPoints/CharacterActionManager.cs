@@ -50,6 +50,7 @@ namespace SODL.ActionPoints
             ActionPointCount = Random.Range(1, 7);
             this.turnOwner = turnOwner;
             onActionPointsChanged?.Invoke();
+            turnOwner.CanDoActions(true);
         }
 
         public void FinishTurn()

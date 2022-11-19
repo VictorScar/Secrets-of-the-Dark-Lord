@@ -16,7 +16,7 @@ namespace SODL.Cells
         public override void OnCharacterMove(GameCharacter character)
         {
             base.OnCharacterMove(character);
-            if (haveFinding)
+            if (haveFinding && character is not NPCCharacter)
             {
                 Game game = Game.Instance;
                 FindingInfo finding = game.FindingsGenerator.GenerateFinding();

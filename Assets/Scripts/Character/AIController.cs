@@ -1,3 +1,7 @@
+using SODL.ActionPoints;
+using SODL.Cells;
+using SODL.Core;
+using SODL.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,63 +11,86 @@ namespace SODL.Character
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField] GameCharacter character;
-        MoveDirection characterDirection;
+        [SerializeField] NPCCharacter npcCharacter;
+        CharacterActionManager actionManager;
+        //MoveDirection characterDirection;
+        TurnManager turnManager;
+        MoveDirection[] directions = (MoveDirection[])Enum.GetValues(typeof(MoveDirection));
 
         private void Start()
         {
-            characterDirection = MoveDirection.Right;  //.Random.Range(1, 4);//MoveDirection.Down;
-            //TODO: var values = Enum.GetValues(typeof(MoveDirection));
+            turnManager = Game.Instance.TurnManager;
+            actionManager = Game.Instance.ActionManager;
+            //characterDirection = DetermineInitialeDirection();
         }
 
-        private void Update()
+        MoveDirection DetermineInitialeDirection()
         {
-            //character.transform.rotation.SetLookRotation(Vector3.right);
-            //character.Move(characterDirection);
+            //MoveDirection[] directions = (MoveDirection[])Enum.GetValues(typeof(MoveDirection));
+            return directions[UnityEngine.Random.Range(1, 5)];
+            //TODO: fix
         }
 
-        void DetermineDirection()
-        {
-            if (characterDirection == MoveDirection.Up)
-            {
-                character.Move(MoveDirection.Up);
-            }
-            else if (characterDirection == MoveDirection.Down)
-            {
-                character.Move(MoveDirection.Down);
-            }
-            else if (characterDirection == MoveDirection.Right)
-            {
-                character.Move(MoveDirection.Right);
-            }
-            else if (characterDirection == MoveDirection.Left)
-            {
-                character.Move(MoveDirection.Left);
-            }
-            else Debug.LogError($"Направление: {characterDirection} не обрабатывается. Поворот должен быть кратным 90 градусов");
-            //Первоочередно - направление, а не поворот объекта.
-            //Необходимо задавать направление и поворачивать объект по нему, а не наоборот
-        }
-
-        void RotateCharacter()
-        {
-            if (character.CurrentCell.OnBeforeCharacterMove(character))
-            {
-                character.transform.Rotate(0, 90, 0);
-            }
-        }
 
         void FindPlayer()
         {
-            List<GameCharacter> characters = character.CurrentCell.CharactersOnCell;
-            foreach (GameCharacter character in characters)
-            {
-                if (character is Player)
-                {
+            Cell cellForVerification = npcCharacter.CurrentCell;
+            //MoveDirection[] directions = (MoveDirection[])Enum.GetValues(typeof(MoveDirection));
 
-                    break;
+            foreach (MoveDirection direction in directions)
+            {
+                cellForVerification = cellForVerification.GetCellByDirection(direction.ToDirectionType());
+                //TODO: Исправить ячейку отсчета
+                List<GameCharacter> charactersOnCell = cellForVerification.CharactersOnCell;
+
+                if (charactersOnCell != null)
+                {
+                    foreach (GameCharacter character in charactersOnCell)
+                    {
+                        if (character is not NPCCharacter)
+                        {
+                            Debug.Log("Fight!");
+                        }
+                    }
                 }
             }
+        }
+
+        MoveDirection DetermineDirection()
+        {
+            MoveDirection characterDirection = npcCharacter.CharacterDirection;
+            for (int i = 0; i < 4; i++)
+            {
+                if (npcCharacter.CanMoveToDirection(characterDirection))
+                {
+                    return characterDirection;
+                }
+                characterDirection = characterDirection.GetRotatedLeft();
+            }
+            return MoveDirection.None;
+        }
+
+        IEnumerator DoStep()
+        {
+            MoveDirection moveDirection = DetermineDirection();
+            if (moveDirection != MoveDirection.None)
+            {
+                //yield return npcCharacter.MoveCoroutine(characterDirection);
+                npcCharacter.Move(moveDirection);
+
+                yield return new WaitWhile(() => npcCharacter.IsMoving);
+                FindPlayer();
+            }
+        }
+
+        public IEnumerator Wandering()
+        {
+            while (actionManager.ActionPointCount > 0)
+            {
+                yield return DoStep();
+            }
+
+            Game.Instance.ActionManager.FinishTurn();
 
         }
     }

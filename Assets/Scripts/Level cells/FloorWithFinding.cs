@@ -13,10 +13,10 @@ namespace SODL.Cells
         [SerializeField] Material emptyFindingMaterial;
 
 
-        public override void OnCharacterMove(GameCharacter character)
+        public override void OnCharacterEnter(GameCharacter character)
         {
-            base.OnCharacterMove(character);
-            if (haveFinding && character is not NPCCharacter)
+            base.OnCharacterEnter(character);
+            if (haveFinding && character is not EnemyCharacter)
             {
                 Game game = Game.Instance;
                 FindingInfo finding = game.FindingsGenerator.GenerateFinding();

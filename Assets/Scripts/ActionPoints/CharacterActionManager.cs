@@ -15,18 +15,33 @@ namespace SODL.ActionPoints
 
         public event Action onCharacterFinished;
         public event Action onActionPointsChanged;
-       
+
+        public bool CanDoAction(CharacterActionType action)
+        {
+            var actionInfo = characterActionConfig.GetInfo(action);
+
+            return CanDoAction(actionInfo);
+        }
+
+        public bool CanDoAction(CharacterActionInfo actionInfo)
+        {
+            if (actionInfo != null && ValidateItem(actionInfo) && ValidatePoints(actionInfo))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool DoAction(CharacterActionType action)
         {
             var actionInfo = characterActionConfig.GetInfo(action);
 
-            if (actionInfo != null && ValidateItem(actionInfo) && ValidatePoints(actionInfo))
+            if (CanDoAction(actionInfo))
             {
                 ActionPointCount -= actionInfo.RequiredPoints;
                 onActionPointsChanged?.Invoke();
                 return true;
             }
-
             return false;
         }
 
@@ -50,7 +65,6 @@ namespace SODL.ActionPoints
             ActionPointCount = Random.Range(1, 7);
             this.turnOwner = turnOwner;
             onActionPointsChanged?.Invoke();
-            turnOwner.CanDoActions(true);
         }
 
         public void FinishTurn()

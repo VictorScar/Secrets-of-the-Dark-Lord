@@ -22,11 +22,10 @@ namespace SODL.Character
         public Cell CurrentCell { get => currentCell; }
         public MoveDirection LastMoveDirection { get; private set; }
         public MoveDirection CharacterDirection { get; private set; }
-        
+
 
         [SerializeField] protected float speed = 0.5f;
         [SerializeField] protected Animator animator;
-        bool isReady = false; //TODO: fix
         CharacterActionManager actionManager;
 
         protected virtual void Awake()
@@ -39,15 +38,12 @@ namespace SODL.Character
             currentCell = startingCell;
             actionManager = Game.Instance.ActionManager;
             Game.Instance.TurnManager.RegisterCharacter(this);
-            Debug.Log("Start");
+            //Debug.Log("Start");
         }
 
         public void Move(MoveDirection direction)
         {
-            if (isReady == true)
-            {
-                StartCoroutine(MoveCoroutine(direction));
-            }
+            StartCoroutine(MoveCoroutine(direction));
         }
 
         IEnumerator MoveCoroutine(MoveDirection direction)
@@ -72,7 +68,7 @@ namespace SODL.Character
                     break;
             }
 
-            
+
             //Проверка условий возможности перехода на ячейку в заданном направлении.
             //Существует ли данная ячейка?
             //Достаточно ли очков действия для перехода на нее?
@@ -90,15 +86,12 @@ namespace SODL.Character
                     yield return PlayMoveAnimation(nextCell);
 
                     //сохранение информации о положении и последнем перемещении персонажа
+                    currentCell.OnCharacterLeave(this);
                     currentCell = nextCell;
                     LastMoveDirection = direction;
 
                     //Уведомление ячейки, что игрок находится на ней
-                    nextCell.OnCharacterMove(this);
-                    if (actionManager.ActionPointCount == 0)
-                    {
-                        CanDoActions(false);
-                    }
+                    nextCell.OnCharacterEnter(this);
                 }
             }
 
@@ -124,11 +117,6 @@ namespace SODL.Character
                 MoveDirection.Right => Quaternion.Euler(0, 90, 0),
                 _ => transform.rotation
             };
-        }
-
-        public void CanDoActions(bool canDo)
-        {
-            isReady = canDo;
         }
 
         IEnumerator PlayMoveAnimation(Cell nextCell)

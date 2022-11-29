@@ -17,6 +17,7 @@ namespace SODL.Cells
             base.Init(map);
             Player instancePlayer = Instantiate(playerPrefab, transform.position, Quaternion.identity);
             instancePlayer.startingCell = this;
+            charactersOnCell.Add(instancePlayer);
             PlayerCamera cameraFollowInstance = Instantiate(cameraFollowPrefab, instancePlayer.transform.position, Quaternion.identity);
             cameraFollowInstance.target = instancePlayer;
         }

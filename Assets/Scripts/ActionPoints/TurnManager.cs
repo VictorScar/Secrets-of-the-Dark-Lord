@@ -35,7 +35,7 @@ namespace SODL.ActionPoints
             characterQueue.Enqueue(character);
             actionManager.StartNewTurn(TurnOwner);
 
-            if (TurnOwner is NPCCharacter npcCharacter)
+            if (TurnOwner is EnemyCharacter npcCharacter)
             {
                 npcCharacter.InitTurn();
             }

@@ -15,49 +15,35 @@ namespace SODL.Cells
         protected Map map;
         public Vector2Int coord;
         [SerializeField] private CharacterActionType actionType;
-        List<GameCharacter> charactersOnCell;
+        [SerializeField]protected List<GameCharacter> charactersOnCell = new List<GameCharacter>();
 
         public Map Map { get { return map; } }
 
         public CharacterActionType ActionType { get => actionType; protected set => actionType = value; }
         public List<GameCharacter> CharactersOnCell { get => charactersOnCell; }
 
-        public virtual void Init(Map map)
+        public event Action<GameCharacter> onCharacterEnter;
+        public event Action<GameCharacter> onCharacterLeave;
+
+        public virtual void Init(Map map) => this.map = map;
+        public virtual bool OnBeforeCharacterMove(GameCharacter character) => true;
+
+        public virtual void OnCharacterEnter(GameCharacter character)
         {
-            this.map = map;
+            charactersOnCell.Add(character);
+            onCharacterEnter?.Invoke(character);
         }
 
-        public virtual bool OnBeforeCharacterMove(GameCharacter character)
+        public virtual void OnCharacterLeave(GameCharacter character)
         {
-            return false;
+            charactersOnCell.Remove(character);
+            onCharacterLeave?.Invoke(character);
         }
 
-        public virtual void OnCharacterMove(GameCharacter character)
-        {
-
-        }
-
-        public Cell GetBottomCell()
-        {
-            return map.GetBottomCell(this);
-        }
-
-        public Cell GetUpperCell()
-        {
-
-            return map.GetUpperCell(this);
-        }
-
-        public Cell GetLeftCell()
-        {
-            return map.GetLeftCell(this);
-        }
-
-        public Cell GetRightCell()
-        {
-
-            return map.GetRightCell(this);
-        }
+        public Cell GetBottomCell() => map.GetBottomCell(this);
+        public Cell GetUpperCell() => map.GetUpperCell(this);
+        public Cell GetLeftCell() => map.GetLeftCell(this);
+        public Cell GetRightCell() => map.GetRightCell(this);
 
         public Cell GetCellByDirection(Direction direction)
         {
@@ -70,16 +56,6 @@ namespace SODL.Cells
                 Direction.Right => GetRightCell(),
                 _ => throw new NotImplementedException(),
             };
-        }
-
-        public void AddCharactrOnCell(GameCharacter character)
-        {
-            charactersOnCell.Add(character);
-        }
-
-        public void RemoveCharactrOnCell(GameCharacter character)
-        {
-            charactersOnCell.Remove(character);
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SODL.Character
 {
-    public class NPCCharacter : GameCharacter
+    public class EnemyCharacter : GameCharacter
     {
         [SerializeField] AIController controller;
         public bool CanMoveToDirection(MoveDirection direction)

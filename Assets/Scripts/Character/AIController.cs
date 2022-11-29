@@ -11,9 +11,8 @@ namespace SODL.Character
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField] NPCCharacter npcCharacter;
+        [SerializeField] EnemyCharacter npcCharacter;
         CharacterActionManager actionManager;
-        //MoveDirection characterDirection;
         TurnManager turnManager;
         MoveDirection[] directions = (MoveDirection[])Enum.GetValues(typeof(MoveDirection));
 
@@ -21,21 +20,11 @@ namespace SODL.Character
         {
             turnManager = Game.Instance.TurnManager;
             actionManager = Game.Instance.ActionManager;
-            //characterDirection = DetermineInitialeDirection();
         }
-
-        MoveDirection DetermineInitialeDirection()
-        {
-            //MoveDirection[] directions = (MoveDirection[])Enum.GetValues(typeof(MoveDirection));
-            return directions[UnityEngine.Random.Range(1, 5)];
-            //TODO: fix
-        }
-
 
         void FindPlayer()
         {
             Cell cellForVerification = npcCharacter.CurrentCell;
-            //MoveDirection[] directions = (MoveDirection[])Enum.GetValues(typeof(MoveDirection));
 
             foreach (MoveDirection direction in directions)
             {
@@ -47,7 +36,7 @@ namespace SODL.Character
                 {
                     foreach (GameCharacter character in charactersOnCell)
                     {
-                        if (character is not NPCCharacter)
+                        if (character is not EnemyCharacter)
                         {
                             Debug.Log("Fight!");
                         }
@@ -75,9 +64,7 @@ namespace SODL.Character
             MoveDirection moveDirection = DetermineDirection();
             if (moveDirection != MoveDirection.None)
             {
-                //yield return npcCharacter.MoveCoroutine(characterDirection);
                 npcCharacter.Move(moveDirection);
-
                 yield return new WaitWhile(() => npcCharacter.IsMoving);
                 FindPlayer();
             }

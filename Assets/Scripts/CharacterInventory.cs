@@ -12,8 +12,9 @@ namespace SODL.Core
     public class CharacterInventory : MonoBehaviour
     {
         [SerializeField] List<InventorySlot> usedSlots = new List<InventorySlot>();
+        [SerializeField, OneLine] List<InventorySlot> startingItems = new List<InventorySlot>();
         [SerializeField, OneLine] InventorySlot[] inventorySlots = new InventorySlot[30];
-        [SerializeField] Item item;
+        //[SerializeField] Item item;
         CharacterActionManager actionManager;
         public event Action OnInventoryUpdated;
 
@@ -22,25 +23,38 @@ namespace SODL.Core
         private void Start()
         {
             actionManager = Game.Instance.ActionManager;
+            if (startingItems.Count > 0)
+            {
+                InitStartingItems();
+            }
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                AddItem(item, 1);
-            }
+            //if (Input.GetKeyDown(KeyCode.E))
+            //{
+            //    AddItem(item, 1);
+            //}
 
-            if (Input.GetKeyDown(KeyCode.R))
+            //if (Input.GetKeyDown(KeyCode.R))
+            //{
+            //    RemoveItem(item);
+            //}
+        }
+
+        void InitStartingItems()
+        {
+            foreach (InventorySlot itemSlot in startingItems)
             {
-                RemoveItem(item);
+                AddItem(itemSlot.item, itemSlot.count);
+                UseItem(itemSlot, true);
             }
         }
 
-        public void UseItem(InventorySlot inventorySlot)
+        public void UseItem(InventorySlot inventorySlot, bool isInit = false)
         {
             //Проверка надеваемый ли предмет
-            if (inventorySlot.item.IsWearable && actionManager.DoAction(CharacterActionType.WearItem))
+            if (inventorySlot.item.IsWearable && (isInit || actionManager.DoAction(CharacterActionType.WearItem)))
             {
                 //Проходим по списку используемых предметов и получаем все предметы такого же или соответствующих типов
                 //и снимаем их

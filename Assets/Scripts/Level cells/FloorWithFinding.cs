@@ -16,14 +16,14 @@ namespace SODL.Cells
         public override void OnCharacterEnter(GameCharacter character)
         {
             base.OnCharacterEnter(character);
-            if (haveFinding && character is not EnemyCharacter)
+            if (haveFinding && character.CanPickupItems)
             {
                 Game game = Game.Instance;
                 FindingInfo finding = game.FindingsGenerator.GenerateFinding();
                 FindingCardEffect effect = game.EffectSystem.FindingCardEffect;
                 if (finding != null)
                 {
-                    character.Inventory.AddItem(finding.Item, finding.ItemCount);
+                    character.AddItem(finding.Item, finding.ItemCount);
                     effect.Show(finding);
                 }
 

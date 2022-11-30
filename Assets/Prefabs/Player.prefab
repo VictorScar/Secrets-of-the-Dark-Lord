@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingCell: {fileID: 0}
+  canPickupItems: 1
+  inventory: {fileID: 1094106820834292782}
   speed: 2
   animator: {fileID: 6796012991436494317}
-  inventory: {fileID: 1094106820834292782}
 --- !u!114 &2984606819772832066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,8 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a97664ff285e440aa93f8a9c7980ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedItems: []
-  itemsInfo:
+  startingItems:
+  - item: {fileID: 11400000, guid: 973234e1eb6c09543975aa03f8d8a246, type: 2}
+    count: 1
+    isWeared: 0
+  inventorySlots:
   - item: {fileID: 0}
     count: 0
     isWeared: 0
@@ -168,7 +172,6 @@ MonoBehaviour:
   - item: {fileID: 0}
     count: 0
     isWeared: 0
-  item: {fileID: 11400000, guid: 96541f4974fd081458f670e2af83fa5d, type: 2}
 --- !u!1001 &4110267284707730802
 PrefabInstance:
   m_ObjectHideFlags: 0

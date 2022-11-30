@@ -1,6 +1,7 @@
 using SODL.ActionPoints;
 using SODL.Cells;
 using SODL.Core;
+using SODL.Inventory;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace SODL.Character
     {
         public Cell startingCell;
         private Cell currentCell;
+        [SerializeField] bool canPickupItems = false;
         public bool IsMoving { get; private set; }
         [SerializeField] CharacterInventory inventory;
         public CharacterInventory Inventory { get => inventory; }
@@ -22,7 +24,7 @@ namespace SODL.Character
         public Cell CurrentCell { get => currentCell; }
         public MoveDirection LastMoveDirection { get; private set; }
         public MoveDirection CharacterDirection { get; private set; }
-
+        public bool CanPickupItems { get => canPickupItems; private set => canPickupItems = value; }
 
         [SerializeField] protected float speed = 0.5f;
         [SerializeField] protected Animator animator;
@@ -117,6 +119,11 @@ namespace SODL.Character
                 MoveDirection.Right => Quaternion.Euler(0, 90, 0),
                 _ => transform.rotation
             };
+        }
+
+        public virtual void AddItem(Item item, int count)
+        {
+            Inventory.AddItem(item, count);
         }
 
         IEnumerator PlayMoveAnimation(Cell nextCell)

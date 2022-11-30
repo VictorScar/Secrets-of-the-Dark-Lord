@@ -6,6 +6,7 @@ using UnityEngine.UI;
 namespace SODL.Inventory
 {
     [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item")]
+
     public class Item : ScriptableObject
     {
         [SerializeField] Sprite icon;

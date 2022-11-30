@@ -7500,6 +7500,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8429707763534760677, guid: f41b384b15b89b24d9c46a2c3eb53ba9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 24e2cc31d260f924da3c1509808e2392, type: 2}
+    - target: {fileID: 8429707763534760677, guid: f41b384b15b89b24d9c46a2c3eb53ba9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429707763782708889, guid: f41b384b15b89b24d9c46a2c3eb53ba9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 24e2cc31d260f924da3c1509808e2392, type: 2}
+    - target: {fileID: 8429707763782708889, guid: f41b384b15b89b24d9c46a2c3eb53ba9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8711485487065207942, guid: f41b384b15b89b24d9c46a2c3eb53ba9, type: 3}
       propertyPath: m_Name
       value: InfoPanel

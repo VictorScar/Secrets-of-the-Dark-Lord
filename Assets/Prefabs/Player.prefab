@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5974f61630720ed41839e4f7b4e302cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3473981914724005232}
+  character: {fileID: 3473981914724005232}
 --- !u!114 &1094106820834292782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,8 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a97664ff285e440aa93f8a9c7980ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedSlots: []
   startingItems:
   - item: {fileID: 11400000, guid: 973234e1eb6c09543975aa03f8d8a246, type: 2}
+    count: 1
+    isWeared: 1
+  - item: {fileID: 11400000, guid: 601f30474d9fa074e8ebec6c0419c6fa, type: 2}
     count: 1
     isWeared: 0
   inventorySlots:

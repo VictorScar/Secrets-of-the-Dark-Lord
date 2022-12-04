@@ -51,7 +51,7 @@ namespace SODL.Character
         IEnumerator MoveCoroutine(MoveDirection direction)
         {
             IsMoving = true;
-            //animator.Play("Run");
+            if (animator!= null) animator.Play("Run");
 
             Cell nextCell = null;
             switch (direction)
@@ -98,7 +98,7 @@ namespace SODL.Character
             }
 
             IsMoving = false;
-            //animator.Play("Idle");
+            if (animator != null) animator.Play("Idle");
 
         }
 

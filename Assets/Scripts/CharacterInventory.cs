@@ -14,9 +14,9 @@ namespace SODL.Core
         [SerializeField] List<InventorySlot> usedSlots = new List<InventorySlot>();
         [SerializeField, OneLine] List<InventorySlot> startingItems = new List<InventorySlot>();
         [SerializeField, OneLine] InventorySlot[] inventorySlots = new InventorySlot[30];
-        //[SerializeField] Item item;
         CharacterActionManager actionManager;
-        public event Action OnInventoryUpdated;
+        public event Action onInventoryUpdated;
+
 
         public InventorySlot[] InventorySlots { get => inventorySlots; }
 
@@ -29,32 +29,23 @@ namespace SODL.Core
             }
         }
 
-        private void Update()
-        {
-            //if (Input.GetKeyDown(KeyCode.E))
-            //{
-            //    AddItem(item, 1);
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.R))
-            //{
-            //    RemoveItem(item);
-            //}
-        }
-
         void InitStartingItems()
         {
-            foreach (InventorySlot itemSlot in startingItems)
+            foreach (InventorySlot startingItem in startingItems)
             {
-                AddItem(itemSlot.item, itemSlot.count);
-                UseItem(itemSlot, true);
+                InventorySlot changedSlot = AddItem(startingItem.item, startingItem.count);
+                if (startingItem.isWeared)
+                {
+                    UseItem(changedSlot, true);
+                }
             }
+            startingItems.Clear();
         }
 
-        public void UseItem(InventorySlot inventorySlot, bool isInit = false)
+        public void UseItem(InventorySlot inventorySlot, bool preservePoints = false)
         {
             //Проверка надеваемый ли предмет
-            if (inventorySlot.item.IsWearable && (isInit || actionManager.DoAction(CharacterActionType.WearItem)))
+            if (inventorySlot.item.IsWearable && (preservePoints || actionManager.DoAction(CharacterActionType.WearItem)))
             {
                 //Проходим по списку используемых предметов и получаем все предметы такого же или соответствующих типов
                 //и снимаем их
@@ -73,7 +64,7 @@ namespace SODL.Core
                     inventorySlot.isWeared = true;
                 }
 
-                OnInventoryUpdated?.Invoke();
+                onInventoryUpdated?.Invoke();
             }
         }
 
@@ -116,23 +107,27 @@ namespace SODL.Core
             }
         }
 
-        public void AddItem(Item item, int count)
+        public InventorySlot AddItem(Item item, int count)
         {
+            InventorySlot changedSlot = null;
             foreach (InventorySlot inventorySlot in inventorySlots)
             {
                 if (inventorySlot.item == item)
                 {
                     inventorySlot.count += count;
+                    changedSlot = inventorySlot;
                     break;
                 }
                 else if (inventorySlot.item == null)
                 {
                     inventorySlot.item = item;
                     inventorySlot.count = count;
+                    changedSlot = inventorySlot;
                     break;
                 }
             }
-            OnInventoryUpdated?.Invoke();
+            onInventoryUpdated?.Invoke();
+            return changedSlot;
         }
 
         public void RemoveItem(Item item)
@@ -151,7 +146,7 @@ namespace SODL.Core
                     break;
                 }
             }
-            OnInventoryUpdated?.Invoke();
+            onInventoryUpdated?.Invoke();
         }
     }
 }

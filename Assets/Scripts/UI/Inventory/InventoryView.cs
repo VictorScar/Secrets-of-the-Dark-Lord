@@ -25,7 +25,7 @@ namespace SODL.UI.Inventory
         private void Awake()
         {
             InitInventory();
-            PlayerInventory.OnInventoryUpdated += () =>
+            PlayerInventory.onInventoryUpdated += () =>
             {
                 if (isActiveAndEnabled)
                 {

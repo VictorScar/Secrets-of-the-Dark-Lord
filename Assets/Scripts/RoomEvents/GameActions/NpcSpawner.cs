@@ -2,8 +2,6 @@ using SODL.ActionPoints;
 using SODL.Cells;
 using SODL.Character;
 using SODL.Utils;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SODL.Core
@@ -14,10 +12,10 @@ namespace SODL.Core
 
         public void SpawnNPC(GameCharacter characterPrefab)
         {
-            Player player = turnManagerCached.Value.TurnOwner as Player;
-            MoveDirection playerDirection = player.LastMoveDirection;
+            GameCharacter character = turnManagerCached.Value.TurnOwner;
+            MoveDirection characterDirection = character.LastMoveDirection;
             //Получаем ячейку для спавна НПС по последнему направлению движения игрока
-            Cell startingCell = player.CurrentCell.GetCellByDirection(playerDirection.ToDirectionType());
+            Cell startingCell = character.CurrentCell.GetCellByDirection(characterDirection.ToDirectionType());
 
 
             if (characterPrefab != null)
@@ -25,7 +23,7 @@ namespace SODL.Core
                 GameCharacter npcCharacter = Instantiate(characterPrefab, startingCell.transform.position, Quaternion.identity);
                 Debug.Log("Instantiate");
                 npcCharacter.startingCell = startingCell;
-                npcCharacter.RotateTo(playerDirection.Inverse());
+                npcCharacter.RotateTo(characterDirection.Inverse());
             }
         }
     }

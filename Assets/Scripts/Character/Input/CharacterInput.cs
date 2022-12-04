@@ -8,7 +8,7 @@ namespace SODL.Character.Input
 {
     public abstract class CharacterInput : MonoBehaviour
     {
-        [SerializeField] protected Player player;
+        [SerializeField] protected GameCharacter character;
         TurnManager turnManager;
 
         private void Start()
@@ -18,14 +18,13 @@ namespace SODL.Character.Input
 
         void Update()
         {
-            if (player == turnManager.TurnOwner && !player.IsMoving)
+            if (character == turnManager.TurnOwner && !character.IsMoving)
             {
                 MoveDirection direction = GetCommand();
                 if (direction != MoveDirection.None)
                 {
-                    player.Move(direction);
+                    character.Move(direction);
                 }
-
             }
         }
 
@@ -33,7 +32,7 @@ namespace SODL.Character.Input
 
         private void Reset()
         {
-            player = GetComponent<Player>();
+            character = GetComponent<GameCharacter>();
         }
     }
 }

@@ -4357,7 +4357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomEvents:
   - {fileID: 11400000, guid: f2dae2f0a11982940b807bc1ab64baee, type: 2}
-  - {fileID: 11400000, guid: f2dae2f0a11982940b807bc1ab64baee, type: 2}
+  - {fileID: 11400000, guid: 923abcdea61278140aca912cf9b8cabe, type: 2}
 --- !u!114 &1411917599
 MonoBehaviour:
   m_ObjectHideFlags: 0

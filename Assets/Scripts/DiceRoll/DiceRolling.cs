@@ -5,8 +5,10 @@ using UnityEngine;
 public class DiceRolling : MonoBehaviour
 {
     [SerializeField] CupController cup;
+    [SerializeField] DiceSceneUI sceneUI;
     [SerializeField] float powerMinThrow = 5;
     [SerializeField] float powerMaxThrow = 20;
+    int diceValue = 0;
     bool isWasThrown = false;
     public bool IsResultObtained { get; private set; } = false;
     [SerializeField] Rigidbody rb;
@@ -24,10 +26,14 @@ public class DiceRolling : MonoBehaviour
     {
         if (isWasThrown && !IsResultObtained)
         {
-            if (rb.velocity.sqrMagnitude <= 0.1)
+            if (rb.velocity.sqrMagnitude <= 0.01)
             {
-                IsResultObtained = true;
-                Debug.Log(IsResultObtained);
+                diceValue = ObtainResult();
+                if (diceValue > 0)
+                {
+                    sceneUI.ShowDiceValue(diceValue);
+                    IsResultObtained = true;
+                }
             }
         }
     }
@@ -47,9 +53,27 @@ public class DiceRolling : MonoBehaviour
         onThrowWasMade?.Invoke();
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         cup.onCupRolling -= RollingDice;
         cup.onThrowComlete -= Throw;
+    }
+
+    int ObtainResult()
+    {
+        Vector3[] directions = new Vector3[] { -transform.up, transform.forward, -transform.forward,
+            transform.right, -transform.right, transform.up };
+
+        for (int i = 0; i < directions.Length; i++)
+        {
+            Ray ray = new Ray(transform.position, directions[i]);
+            if (Physics.Raycast(ray, 0.5f))
+            {
+                //Debug.Log(i + 1);
+                return i + 1;
+            }
+        }
+        //Debug.Log(0);
+        return 0;
     }
 }

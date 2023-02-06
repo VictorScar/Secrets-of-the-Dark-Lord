@@ -1,41 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DiceSceneUI : MonoBehaviour
+namespace SODL.DiceRoll
 {
-    [SerializeField] TMP_Text descriptionUI;
-    [SerializeField] TMP_Text diceValueUI;
-
-    void Start()
+    public class DiceSceneUI : MonoBehaviour
     {
-        StartCoroutine(ShowDiscriptionCoroutine());
-    }
+        [SerializeField] TMP_Text descriptionUI;
+        [SerializeField] TMP_Text diceValueUI;
 
+        [SerializeField] DiceRolling dice;
 
-    void Update()
-    {
+        IEnumerator Start()
+        {
+            dice.onResultObtained += (diceValue) => StartCoroutine(ShowDiceValueCoroutine(diceValue));
 
-    }
+            //Show description
+            descriptionUI.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2);
+            descriptionUI.gameObject.SetActive(false);
+        }
 
-    public void ShowDiceValue(int diceValue)
-    {
-        StartCoroutine(ShowDiceValueCoroutine(diceValue));
-    }
-
-    IEnumerator ShowDiceValueCoroutine(int diceValue)
-    {
-        diceValueUI.gameObject.SetActive(true);
-        diceValueUI.text = $"Выпало: {diceValue}";
-        yield return new WaitForSeconds(2);
-        diceValueUI.gameObject.SetActive(false);
-    }
-
-    IEnumerator ShowDiscriptionCoroutine()
-    {
-        descriptionUI.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
-        descriptionUI.gameObject.SetActive(false);
+        IEnumerator ShowDiceValueCoroutine(int diceValue)
+        {
+            diceValueUI.gameObject.SetActive(true);
+            diceValueUI.text = $"Выпало: {diceValue}";
+            yield return new WaitForSeconds(2);
+            diceValueUI.gameObject.SetActive(false);
+        }
     }
 }

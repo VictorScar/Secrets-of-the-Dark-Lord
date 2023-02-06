@@ -2,78 +2,85 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiceRolling : MonoBehaviour
+namespace SODL.DiceRoll
 {
-    [SerializeField] CupController cup;
-    [SerializeField] DiceSceneUI sceneUI;
-    [SerializeField] float powerMinThrow = 5;
-    [SerializeField] float powerMaxThrow = 20;
-    int diceValue = 0;
-    bool isWasThrown = false;
-    public bool IsResultObtained { get; private set; } = false;
-    [SerializeField] Rigidbody rb;
-
-    public event System.Action onThrowWasMade;
-
-    void Start()
+    public class DiceRolling : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-        cup.onCupRolling += RollingDice;
-        cup.onThrowComlete += Throw;
-    }
+        [SerializeField] CupController cup;
+        [SerializeField] DiceSceneUI sceneUI;
+        [SerializeField] float powerMinThrow = 5;
+        [SerializeField] float powerMaxThrow = 20;
 
-    void Update()
-    {
-        if (isWasThrown && !IsResultObtained)
+        [SerializeField] Rigidbody rb;
+
+        public event System.Action<int> onResultObtained;
+
+
+        void Start()
         {
-            if (rb.velocity.sqrMagnitude <= 0.01)
+            cup.onShakingEnd += Throw;
+        }
+
+        void Throw()
+        {
+            rb.rotation = Random.rotation;
+            Vector3 throwDirection = new Vector3(0, 0, Random.Range(powerMinThrow, powerMaxThrow));
+            rb.isKinematic = false;
+            rb.velocity = throwDirection;
+            rb.AddTorque(throwDirection, ForceMode.Impulse);
+            StartCoroutine(WatchingTheDice());
+        }
+
+        void OnDestroy()
+        {
+            cup.onShakingEnd -= Throw;
+        }
+
+        int ObtainResult()
+        {
+            Vector3[] directions = new Vector3[] {
+            -transform.up,
+            transform.forward,
+            -transform.forward,
+            transform.right,
+            -transform.right,
+            transform.up
+        };
+
+            for (int i = 0; i < directions.Length; i++)
             {
-                diceValue = ObtainResult();
-                if (diceValue > 0)
+                Ray ray = new Ray(transform.position, directions[i]);
+                if (Physics.Raycast(ray, 0.5f))
                 {
-                    sceneUI.ShowDiceValue(diceValue);
-                    IsResultObtained = true;
+                    return i + 1;
                 }
             }
+
+            return 0;
         }
-    }
 
-    void RollingDice()
-    {
-        transform.rotation = Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
-    }
-
-    void Throw()
-    {
-        Vector3 throwDirection = new Vector3(0, 0, Random.Range(powerMinThrow, powerMaxThrow));
-        rb.isKinematic = false;
-        rb.AddForce(throwDirection, ForceMode.Impulse);
-        rb.AddTorque(throwDirection, ForceMode.Impulse);
-        isWasThrown = true;
-        onThrowWasMade?.Invoke();
-    }
-
-    void OnDestroy()
-    {
-        cup.onCupRolling -= RollingDice;
-        cup.onThrowComlete -= Throw;
-    }
-
-    int ObtainResult()
-    {
-        Vector3[] directions = new Vector3[] { -transform.up, transform.forward, -transform.forward,
-            transform.right, -transform.right, transform.up };
-
-        for (int i = 0; i < directions.Length; i++)
+        IEnumerator WatchingTheDice()
         {
-            Ray ray = new Ray(transform.position, directions[i]);
-            if (Physics.Raycast(ray, 0.5f))
+            //Ожидаем остановки кубика
+            yield return new WaitUntil(() => rb.IsSleeping());
+
+            //Получение результата
+            int diceValue = 0;
+
+            yield return new WaitWhile(() =>
             {
-                //Debug.Log(i + 1);
-                return i + 1;
-            }
+                diceValue = ObtainResult();
+                return diceValue == 0;
+            });
+
+            //наводим камеру и выводим результат
+            onResultObtained?.Invoke(diceValue);
         }
-        //Debug.Log(0);
-        return 0;
+
+        //[NaughtyAttributes.Button]
+        private void Reset()
+        {
+            rb = GetComponent<Rigidbody>();
+        }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SODL.DiceRoll
@@ -7,35 +5,42 @@ namespace SODL.DiceRoll
     public class CameraFollow : MonoBehaviour
     {
         [SerializeField] DiceRolling target;
+        [SerializeField] CupController cup;
         [SerializeField] float speed = 1f;
         [SerializeField] float offset = 5f;
 
+        Vector3 offsetZ;
+        Vector3 offsetY;
+
+        bool isResultObtained = false;
+        bool isFollowEnabled = false;
+
         private void Start()
         {
-            target.onThrowWasMade += StartFolowwing;
-        }
-        void StartFolowwing()
-        {
-            StartCoroutine(FollowTheDice());
+            cup.onShakingEnd += () => isFollowEnabled = true;
+            target.onResultObtained += (diceValue) => isResultObtained = true;
+            offsetZ = new Vector3(0, 0, -offset);
+            offsetY = new Vector3(0, offset, 0);
         }
 
-        IEnumerator FollowTheDice()
+        private void FixedUpdate()
         {
-            while (true)
+            if (!isFollowEnabled)
             {
-                transform.LookAt(target.transform);
+                return;
+            }
 
-                if (!target.IsResultObtained)
-                {
-                    transform.position = target.transform.position + new Vector3(0, 0, -offset);
-                }
-                else
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, target.transform.position
-                    + new Vector3(0, offset, 0), Time.fixedDeltaTime * speed);
-                }
+            transform.LookAt(target.transform);
 
-                yield return new WaitForFixedUpdate();
+            if (!isResultObtained)
+            {
+                transform.position = target.transform.position + offsetZ;
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position,
+                    target.transform.position + offsetY,
+                    Time.fixedDeltaTime * speed);
             }
         }
     }

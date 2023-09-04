@@ -4,6 +4,8 @@ using UnityEngine;
 using SODL.Character;
 using System;
 using Random = UnityEngine.Random;
+using SODL.DiceRoll;
+using SODL.Core;
 
 namespace SODL.ActionPoints
 {
@@ -11,10 +13,17 @@ namespace SODL.ActionPoints
     {
         [SerializeField] CharacterActionConfig characterActionConfig;
         GameCharacter turnOwner;
+        DiceRollManager diceRollManager;
         public int ActionPointCount { get; private set; }
 
         public event Action onCharacterFinished;
         public event Action onActionPointsChanged;
+
+        private void Awake()
+        {
+            diceRollManager = Game.Instance.DiceRollManager;
+            Debug.Log(diceRollManager);
+        }
 
         public bool CanDoAction(CharacterActionType action)
         {
@@ -62,8 +71,15 @@ namespace SODL.ActionPoints
 
         public void StartNewTurn(GameCharacter turnOwner)
         {
-            ActionPointCount = Random.Range(1, 7);
             this.turnOwner = turnOwner;
+            diceRollManager.onDiceRollEnded += UpdateValues;
+            diceRollManager.StartDiceRolling();
+        }
+
+        void UpdateValues(int actionPoints)
+        {
+            ActionPointCount = actionPoints;
+            diceRollManager.onDiceRollEnded -= UpdateValues;
             onActionPointsChanged?.Invoke();
         }
 

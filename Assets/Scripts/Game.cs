@@ -1,5 +1,6 @@
 using SODL.ActionPoints;
 using SODL.Character;
+using SODL.DiceRoll;
 using SODL.Finding;
 using SODL.RoomEvents;
 using SODL.UI;
@@ -19,6 +20,8 @@ namespace SODL.Core
         [SerializeField] private TurnManager turnManager;
         [SerializeField] private NpcSpawner npcSpawner;
         [SerializeField] private DoorUIPool doorUIPool;
+        [SerializeField] private DiceRollManager diceRollManager;
+
 
         public static Game Instance { get; private set; }
         public Player Player { get { return player; } set { player = value; } }
@@ -31,6 +34,7 @@ namespace SODL.Core
         public TurnManager TurnManager { get => turnManager; }
         public NpcSpawner NpcSpawner { get => npcSpawner; }
         public DoorUIPool DoorUIPool { get => doorUIPool; }
+        public DiceRollManager DiceRollManager { get => diceRollManager; }
 
         private void Awake()
         {

@@ -1,22 +1,41 @@
 using SODL.Character;
+using SODL.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DiceRollController : MonoBehaviour
+namespace SODL.DiceRoll
 {
-    int diceValue = 0;
-  
-    public void GetDiceValue(int value)
+    public class DiceRollController : MonoBehaviour
     {
-        diceValue = value;
-    }
+        int diceValue = 0;
+        [SerializeField] DiceRolling dice;
 
-    public int InitDiceRollScene(GameCharacter character)
-    {
-        diceValue = 0;
-        SceneManager.LoadScene("DiceScene", LoadSceneMode.Additive);
-        return diceValue;
+        public event Action<int> diceResultObtained;
+
+        private void Start()
+        {
+            dice.onResultObtained += GetDiceValue;
+            Game.Instance.DiceRollManager.InitScene(this);
+        }
+
+        public void GetDiceValue(int value)
+        {
+            diceValue = value;
+            //diceResultObtained?.Invoke(diceValue);
+            Debug.Log($"Значение кубика: {diceValue}");
+        }
+
+        public void ReturnResult()
+        {
+            diceResultObtained?.Invoke(diceValue);
+        }
+
+        private void OnDestroy()
+        {
+            dice.onResultObtained -= GetDiceValue;
+        }
     }
 }

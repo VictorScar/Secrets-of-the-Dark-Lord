@@ -10,10 +10,16 @@ namespace SODL.DiceRoll
         [SerializeField] TMP_Text diceValueUI;
 
         [SerializeField] DiceRolling dice;
+        [SerializeField] DiceRollController controller;
+
+        void ShowDiceUI(int diceValue)
+        {
+            StartCoroutine(ShowDiceValueCoroutine(diceValue));
+        }
 
         IEnumerator Start()
         {
-            dice.onResultObtained += (diceValue) => StartCoroutine(ShowDiceValueCoroutine(diceValue));
+            dice.onResultObtained += ShowDiceUI;
 
             //Show description
             descriptionUI.gameObject.SetActive(true);
@@ -27,6 +33,12 @@ namespace SODL.DiceRoll
             diceValueUI.text = $"Выпало: {diceValue}";
             yield return new WaitForSeconds(2);
             diceValueUI.gameObject.SetActive(false);
+            controller.ReturnResult();
+        }
+
+        private void OnDestroy()
+        {
+            dice.onResultObtained -= ShowDiceUI;
         }
     }
 }

@@ -15,10 +15,10 @@ namespace SODL.Cells
         public override void Init(Map map)
         {
             base.Init(map);
-            Player instancePlayer = Instantiate(playerPrefab, transform.position, Quaternion.identity);
+            Player instancePlayer = Instantiate(playerPrefab, transform.position, Quaternion.identity, map.transform);
             instancePlayer.startingCell = this;
             charactersOnCell.Add(instancePlayer);
-            PlayerCamera cameraFollowInstance = Instantiate(cameraFollowPrefab, instancePlayer.transform.position, Quaternion.identity);
+            PlayerCamera cameraFollowInstance = Instantiate(cameraFollowPrefab, instancePlayer.transform.position, Quaternion.identity, map.transform);
             cameraFollowInstance.target = instancePlayer;
         }
     }

@@ -18,9 +18,14 @@ namespace SODL.DiceRoll
         private void Start()
         {
             cup.onShakingEnd += () => isFollowEnabled = true;
-            target.onResultObtained += (diceValue) => isResultObtained = true;
+            target.onResultObtained += ObtainResult;
             offsetZ = new Vector3(0, 0, -offset);
             offsetY = new Vector3(0, offset, 0);
+        }
+
+        void ObtainResult(int diceValue)
+        {
+            isResultObtained = true;
         }
 
         private void FixedUpdate()
@@ -42,6 +47,11 @@ namespace SODL.DiceRoll
                     target.transform.position + offsetY,
                     Time.fixedDeltaTime * speed);
             }
+        }
+
+        private void OnDestroy()
+        {
+            target.onResultObtained -= ObtainResult;
         }
     }
 }
